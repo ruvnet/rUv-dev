@@ -26,7 +26,7 @@ bash setup.sh --install-packages
 
 ### Step 2
 ```
-bash setup.sh --setup
+bash setup.sh --configure
 ```
 
 
