@@ -2,7 +2,7 @@
 #
 # setup.sh - Set up rUv-dev environment
 #
-# Usage: setup.sh [-h|--help] [-i|--install-packages] [-c|--configure] [-s|--setup] [-q|--quit]
+# Usage: setup.sh [-h|--help] [-i|--install-packages] [-c|--configure] [-s|--setup] [-q|--quit] [--llm] [--oi]
 #
 # Options:
 #   -h, --help                Show help menu
@@ -10,6 +10,8 @@
 #   -c, --configure           Configure environment variables and settings
 #   -s, --setup               Perform initial setup with guided steps
 #   -q, --quit                Quit the setup process
+#   --llm                     Configure liteLLM
+#   --oi                      Configure Open Interpreter
 
 set -o errexit  # Exit on error
 set -o nounset  # Exit on unset variables
@@ -631,41 +633,47 @@ echo "oi                        Configure Open Interpreter"
 echo "q, --quit                 Quit the setup process"
 echo ""
 
-while true; do
-  read -p "Enter an option (h for help): " choice
-  case "$choice" in
-    h|-h|--help)
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
       show_help
+      exit 0
       ;;
-    i|-i|--install-packages)
+    -i|--install-packages)
       echo "🤖 Starting Install Process"
       pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow
+      shift
       ;;
-    c|-c|--configure)
+    -c|--configure)
       perform_configuration
+      shift
       ;;
-    s|-s|--setup)
+    -s|--setup)
       if [ -d "$HOME/.rUv-dev" ]; then
         ask_initial_setup
       else
         perform_initial_setup
         perform_configuration
       fi
+      shift
       ;;
-    llm)
+    --llm)
       echo "🔧 Configuring liteLLM..."
       configure_litellm
+      shift
       ;;
-    oi)
+    --oi)
       echo "🔧 Configuring Open Interpreter..."
       configure_open_interpreter
+      shift
       ;;
-    q|-q|--quit)
+    -q|--quit)
       echo "Quitting setup..."
       exit 0
       ;;
     *)
-      echo "Invalid choice. Please try again."
+      echo "Invalid option: $1. Please try again."
+      shift
       ;;
   esac
 done
