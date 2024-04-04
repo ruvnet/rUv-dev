@@ -128,6 +128,44 @@ To get started with rUv-dev, follow these steps:
 3. Customize the dotfiles and configurations to suit your preferences.
 4. Start using Open Interpreter and Jupyter Notebook to supercharge your development workflow!
 
+
+## How The script works.
+1. Environment Variables:
+   - The script appends the selected configuration options as environment variables to the `~/.bashrc` file.
+   - For example, when setting the OpenAI API key, the script appends `export OPENAI_API_KEY=<user_input>` to `~/.bashrc`.
+   - Similarly, other configuration options like LLM provider, API keys, optimization settings, and advanced settings are saved as environment variables in `~/.bashrc`.
+   - By appending these variables to `~/.bashrc`, they will be available in future shell sessions when the file is sourced.
+
+2. Configuration Files:
+   - The script creates configuration files in specific directories to store the selected settings.
+   - For Open Interpreter, the script creates a configuration file at `~/.config/open-interpreter/config.yaml` with the selected API keys and model settings.
+   - The script also creates a `.env` file in the user's home directory (`~/.env`) to store additional secrets. The contents of this file are then exported as environment variables by appending `export $(grep -v "^#" ~/.env)` to `~/.bashrc`.
+
+3. Jupyter Notebook Configuration:
+   - The script generates a Jupyter Notebook configuration file using the command `jupyter notebook --generate-config`.
+   - It then appends specific configuration options like `c.NotebookApp.open_browser = False`, `c.NotebookApp.ip = '0.0.0.0'`, and `c.NotebookApp.port = 8888` to the `~/.jupyter/jupyter_notebook_config.py` file.
+
+4. Aliases and Functions:
+   - The script defines aliases and functions related to Open Interpreter and Jupyter Notebook.
+   - These aliases and functions are appended to the `~/.bashrc` file using the `>>` redirection operator.
+   - By sourcing `~/.bashrc` after appending the aliases and functions, they become available in the current shell session.
+
+5. Local Knowledge Base:
+   - The script creates a directory `~/kb` to serve as a local knowledge base.
+   - It also creates a `README.md` file inside the `~/kb` directory with instructions on how to use the local knowledge base.
+
+6. Tmux Configuration:
+   - The script appends an alias `dev` for creating a tmux development session to the `~/.bashrc` file.
+   - By sourcing `~/.bashrc` after appending the alias, it becomes available in the current shell session.
+
+7. Local CI/CD Pipeline:
+   - The script creates a directory `~/ci-cd` for the local CI/CD pipeline.
+   - It creates a `README.md` file inside the `~/ci-cd` directory with instructions on how to use the local CI/CD pipeline.
+   - It also creates a `run-tests.sh` script inside the `~/ci-cd` directory with a command to execute the pipeline.
+
+To ensure that the changes take effect, the script sources the `~/.bashrc` file after appending the aliases and functions. However, for the environment variables and other configurations to be available in future shell sessions, the user needs to source `~/.bashrc` or start a new shell session after running the setup script.
+
+
 ## Contributing
 
 We welcome contributions from the community to make rUv-dev even better! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request on the GitHub repository.
