@@ -17,6 +17,10 @@ Welcome to rUv-dev, an innovative development environment that leverages the pow
 
 To quickly start a new codespace with rUv-dev, simply press the "," (comma) key on your keyboard while viewing this repository on GitHub. This will automatically create a new codespace with all the necessary configurations and dotfiles set up for you.
 
+```
+bash setup.sh
+```
+
 ## Introduction
 
 rUv-dev is a cutting-edge development setup that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
