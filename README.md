@@ -19,9 +19,16 @@ Welcome to rUv-dev, an innovative development environment that leverages the pow
 
 To quickly start a new codespace with rUv-dev, simply press the "," (comma) key on your keyboard while viewing this repository on GitHub. This will automatically create a new codespace with all the necessary configurations and dotfiles set up for you.
 
+### Step 1
 ```
-bash setup.sh
+bash setup.sh --install-packages
 ```
+
+### Step 2
+```
+bash setup.sh --setup
+```
+
 
 ## Introduction
 
