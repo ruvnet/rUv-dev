@@ -1,0 +1,20 @@
+{
+  "name": "rUv Ai Development Environment",
+  "dotfiles.repository": "https://github.com/ruvnet/rUv-dev",
+  "dotfiles.targetPath": "~/dotfiles",
+  "dotfiles.installCommand": "~/dotfiles/setup.sh",
+
+  // Other configuration options...
+  "extensions": [
+    // List of extensions to install
+  ],
+
+  "postCreateCommand": "bash ~/dotfiles/setup.sh",
+
+  // Docker configuration
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+
+  // Other settings and configurations...
+}
