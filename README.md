@@ -23,7 +23,7 @@ bash setup.sh
 
 ## Introduction
 
-rUv-dev is a cutting-edge development setup that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
+rUv-dev is a cutting-edge development setup that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, liteLLM, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
 
 ## Benefits
 
@@ -49,13 +49,27 @@ With rUv-dev, you can:
 
 At the core of rUv-dev are two powerful tools: Open Interpreter and Jupyter Notebook.
 
-### Open Interpreter
 
-Open Interpreter is an AI-powered coding assistant that understands natural language and generates code snippets based on your instructions. With Open Interpreter, you can:
+## Features
+
+### liteLLM Integration
+
+rUv-dev seamlessly integrates with liteLLM, a lightweight and efficient library for working with large language models. With liteLLM, you can:
+
+- 🌐 Access a wide range of LLM providers, including OpenAI, Anthropic, Hugging Face, Cohere, Azure OpenAI, and Replicate.
+- 🔑 Securely store and manage API keys for different LLM providers.
+- 🚀 Optimize LLM performance with features like streaming, caching, and rate limiting.
+- 🔧 Customize LLM behavior with advanced settings like context window size, API versions, and proxy servers.
+
+### Open Interpreter Integration
+
+Open Interpreter is a powerful tool that allows you to interact with AI models using natural language. With Open Interpreter, you can:
 
 - 💬 Describe your coding goals in plain English and let AI generate the corresponding code.
-- 🌐 Access a wide range of AI models and libraries, including OpenAI and LiteLLM, to power your coding tasks.
+- 🌐 Access a wide range of AI models and libraries, including OpenAI and Anthropic.
 - 🔧 Customize Open Interpreter's behavior and preferences to suit your coding style.
+- 🔒 Ensure secure code execution with isolation and safe mode settings.
+- 📊 Integrate with Jupyter Notebook for interactive coding and data visualization.
 
 ### Jupyter Notebook
 
@@ -64,6 +78,15 @@ Jupyter Notebook is an interactive development environment that allows you to co
 - 📝 Create and share interactive coding notebooks with embedded AI-generated code snippets.
 - 📊 Visualize data and results using a variety of charting libraries and tools.
 - 🎨 Collaborate with others by sharing and versioning your Jupyter notebooks.
+
+### Setup and Configuration
+
+rUv-dev provides a user-friendly setup script (`setup.sh`) that simplifies the process of setting up and configuring your development environment. With the setup script, you can:
+
+- 🚀 Perform initial setup with guided steps, including cloning the rUv-dev repository and configuring dotfiles.
+- 📦 Install required packages and dependencies with a single command.
+- 🔧 Configure environment variables and settings for Open Interpreter, liteLLM, and other tools.
+- 🎨 Customize your development environment with a variety of options and preferences.
 
 ## Using Dotfiles
 
