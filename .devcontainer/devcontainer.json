@@ -8,5 +8,8 @@
     // List of extensions to install
   ],
 
-  "postCreateCommand": "bash ~/dotfiles/setup.sh"
+  "postCreateCommand": "bash ~/dotfiles/setup.sh",
+
+  "workspaceFolder": "/workspaces/rUv-dev",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/rUv-dev,type=bind,consistency=cached"
 }
