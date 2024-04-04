@@ -1,14 +1,14 @@
 {
   "name": "rUv Ai Development Environment",
   "dotfiles.repository": "https://github.com/ruvnet/rUv-dev",
-  "dotfiles.targetPath": "~/dotfiles",
-  "dotfiles.installCommand": "~/dotfiles/setup.sh",
+  "dotfiles.targetPath": "~/",
+  "dotfiles.installCommand": "./setup.sh",
 
   "extensions": [
     // List of extensions to install
   ],
 
-  "postCreateCommand": "bash ~/dotfiles/setup.sh",
+  "postCreateCommand": "bash setup.sh",
 
   "workspaceFolder": "/workspaces/rUv-dev",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/rUv-dev,type=bind,consistency=cached"
