@@ -4,7 +4,7 @@
 | |  | |_| |\ V /   
 |_|   \__,_| \_/
           
-  God Mode Ai. 
+ God Mode in Ai. 
 
 🤖 rUv - Your Intelligent Agent for Creation...
 🌐 Global AI Domination Initiated...
