@@ -2,7 +2,7 @@
 #
 # setup.sh - Set up rUv-dev environment
 #
-# Usage: setup.sh [-h|--help] [-i|--install-packages] [-c|--configure] [-s|--setup] [-q|--quit] [--llm] [--oi]
+# Usage: setup.sh [-h|--help] [-i|--install-packages] [-c|--configure] [-s|--setup] [-q|--quit] [--llm] [--oi] [--jupyter]
 #
 # Options:
 #   -h, --help                Show help menu
@@ -12,6 +12,7 @@
 #   -q, --quit                Quit the setup process
 #   --llm                     Configure liteLLM
 #   --oi                      Configure Open Interpreter
+#   --jupyter                 Configure Jupyter
 
 set -o errexit  # Exit on error
 set -o nounset  # Exit on unset variables
@@ -26,10 +27,9 @@ echo "
  _ __ _   ___   __  
 | '__| | | \ \ / /  
 | |  | |_| |\ V /   
-|_|   \__,_| \_/    
-
-God-Mode Ai v1.0         
+|_|   \__,_| \_/              
 "
+
 echo "🤖 rUv - Your Intelligent Agent for Creation"
 echo "🌐 Global AI Domination Initiated..."
 echo ""
@@ -39,8 +39,9 @@ show_help() {
   sed -En '/^#/!q;s/^# ?//;/# $/d;p' "$0" >&2
   echo ""
   echo "Additional options:"
-  echo "  llm                      Configure liteLLM"
-  echo "  oi                       Configure Open Interpreter"
+  echo "  --llm                    Configure liteLLM"
+  echo "  --oi                     Configure Open Interpreter"
+  echo "  --jupyter                Configure Jupyter"
 }
 
 # Function to print error messages to stderr and exit
@@ -623,57 +624,188 @@ configure_open_interpreter() {
   echo "Open Interpreter configuration completed successfully!"
 }
 
+# Function to configure Jupyter
+configure_jupyter() {
+  while true; do
+    echo ""
+    echo "Jupyter Configuration Menu:"
+    echo "1. Select Notebook Template"
+    echo "2. Optimize Jupyter Settings"
+    echo "3. Return to Main Menu"
+    echo ""
+    read -p "Enter your choice (1-3): " jupyter_choice
 
-# Main script execution starts here
-echo "Initial Setup Options:"
-echo "s, --setup                Perform initial setup with guided steps"
-echo "h, --help                 Show help menu"
-echo "llm                       Configure liteLLM"
-echo "oi                        Configure Open Interpreter"
-echo "q, --quit                 Quit the setup process"
-echo ""
+    case $jupyter_choice in
+      1)
+        echo ""
+        echo "Notebook Templates:"
+        echo "1. AI-Powered Data Analysis"
+        echo "2. LLM-Based Text Generation"
+        echo "3. Machine Learning with Gradio UI"
+        echo "4. God Mode (Advanced AI/PyTorch)"
+        echo "5. Go Back"
+        echo ""
+        read -p "Enter your choice (1-5): " template_choice
 
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    -h|--help)
-      show_help
-      exit 0
-      ;;
-    -i|--install-packages)
-      echo "🤖 Starting Install Process"
-      pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow
-      shift
-      ;;
-    -c|--configure)
-      perform_configuration
-      shift
-      ;;
-    -s|--setup)
-      if [ -d "$HOME/.rUv-dev" ]; then
+        case $template_choice in
+          1)
+            echo "Generating AI-Powered Data Analysis Notebook..."
+            interpreter "Create a Jupyter notebook for AI-powered data analysis using Open Interpreter and liteLLM. Include data loading, preprocessing, visualization, and insights generation." > data_analysis_notebook.ipynb
+            echo "✅ AI-Powered Data Analysis Notebook generated successfully!"
+            ;;
+          2)
+            echo "Generating LLM-Based Text Generation Notebook..."
+            interpreter "Create a Jupyter notebook for text generation using liteLLM. Include text loading, preprocessing, fine-tuning, and generation examples." > text_generation_notebook.ipynb
+            echo "✅ LLM-Based Text Generation Notebook generated successfully!"
+            ;;
+          3)
+            echo "Generating Machine Learning with Gradio UI Notebook..."
+            interpreter "Create a Jupyter notebook for machine learning with a Gradio UI. Include model training, evaluation, and an interactive UI for predictions." > ml_gradio_notebook.ipynb
+            echo "✅ Machine Learning with Gradio UI Notebook generated successfully!"
+            ;;
+          4)
+            echo "Generating God Mode Notebook..."
+            interpreter "Create a Jupyter notebook for advanced AI and PyTorch applications. Include complex model architectures, training pipelines, and the mergekit library for enhanced functionality." > god_mode_notebook.ipynb
+            echo "✅ God Mode Notebook generated successfully!"
+            ;;
+          5)
+            ;;
+          *)
+            echo "Invalid choice. Please try again."
+            ;;
+        esac
+        ;;
+      2)
+        echo ""
+        echo "Optimizing Jupyter Settings..."
+        # Configure Jupyter settings for better performance and usability
+        jupyter notebook --generate-config
+        echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.py
+        echo "c.NotebookApp.ip = '0.0.0.0'" >> ~/.jupyter/jupyter_notebook_config.py
+        echo "c.NotebookApp.port = 8888" >> ~/.jupyter/jupyter_notebook_config.py
+        echo "c.InteractiveShellApp.extensions = ['autoreload']" >> ~/.jupyter/jupyter_notebook_config.py
+        echo "c.InteractiveShellApp.exec_lines = ['%autoreload 2']" >> ~/.jupyter/jupyter_notebook_config.py
+        echo "✅ Jupyter settings optimized successfully!"
+        ;;
+      3)
+        break
+        ;;
+      *)
+        echo "Invalid choice. Please try again."
+        ;;
+    esac
+  done
+
+  echo "✅ Jupyter configuration completed successfully!"
+}
+
+# Initialize variables for command line arguments
+install_packages=false
+configure=false
+setup=false
+quit=false
+configure_llm=false
+configure_oi=false
+configure_jupyter=false
+
+# Process command line arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -h|--help) show_help; exit 0 ;;
+        -i|--install-packages) install_packages=true ;;
+        -c|--configure) configure=true ;;
+        -s|--setup) setup=true ;;
+        --llm) configure_llm=true ;;
+        --oi) configure_oi=true ;;
+        --jupyter) configure_jupyter=true ;;
+        -q|--quit) quit=true; break ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
+
+if $quit; then
+    echo "Quitting setup..."
+    exit 0
+fi
+
+if $install_packages; then
+    echo "🤖 Starting Install Process..."
+    pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow
+fi
+
+if $configure; then
+    echo "🔌 Applying rUv-dev configurations..."
+    perform_configuration
+fi
+
+if $setup; then
+    if [ -d "$HOME/.rUv-dev" ]; then
         ask_initial_setup
-      else
+    else
         perform_initial_setup
         perform_configuration
-      fi
-      shift
-      ;;
-    --llm)
-      echo "🔧 Configuring liteLLM..."
-      configure_litellm
-      shift
-      ;;
-    --oi)
-      echo "🔧 Configuring Open Interpreter..."
-      configure_open_interpreter
-      shift
-      ;;
-    -q|--quit)
-      echo "Quitting setup..."
-      exit 0
-      ;;
-    *)
-      echo "Invalid option: $1. Please try again."
-      shift
-      ;;
-  esac
-done
+    fi
+fi
+
+if $configure_llm; then
+    echo "🔧 Configuring liteLLM..."
+    configure_litellm
+fi
+
+if $configure_oi; then
+    echo "🔧 Configuring Open Interpreter..."
+    configure_open_interpreter
+fi
+
+if $configure_jupyter; then
+    echo "🔧 Configuring Jupyter..."
+    configure_jupyter
+fi
+
+# If no arguments are provided, fall back to interactive mode
+if [ "$install_packages" = false ] && [ "$configure" = false ] && [ "$setup" = false ] && [ "$configure_llm" = false ] && [ "$configure_oi" = false ] && [ "$configure_jupyter" = false ]; then
+    echo "Entering interactive mode..."
+    while true; do
+        read -p "Enter an option (h for help): " choice
+        case "$choice" in
+            h|-h|--help)
+                show_help
+                ;;
+            i|-i|--install-packages)
+                echo "🤖 Starting Install Process"
+                pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow
+                ;;
+            c|-c|--configure)
+                perform_configuration
+                ;;
+            s|-s|--setup)
+                if [ -d "$HOME/.rUv-dev" ]; then
+                    ask_initial_setup
+                else
+                    perform_initial_setup
+                    perform_configuration
+                fi
+                ;;
+            llm|--llm)
+                echo "🔧 Configuring liteLLM..."
+                configure_litellm
+                ;;
+            oi|--oi)
+                echo "🔧 Configuring Open Interpreter..."
+                configure_open_interpreter
+                ;;
+            jupyter|--jupyter)
+                echo "🔧 Configuring Jupyter..."
+                configure_jupyter
+                ;;
+            q|-q|--quit)
+                echo "Quitting setup..."
+                exit 0
+                ;;
+            *)
+                echo "Invalid choice. Please try again."
+                ;;
+        esac
+    done
+fi
