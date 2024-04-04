@@ -23,7 +23,7 @@ bash setup.sh
 
 ## Introduction
 
-rUv-dev is a cutting-edge development setup that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, liteLLM, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
+rUv-dev is a cutting-edge Ai development setup for Codespace and VScode that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, liteLLM, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
 
 ## Benefits
 
