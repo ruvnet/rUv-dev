@@ -1,13 +1,14 @@
-             
+```             
  _ __ _   ___   __  
 | '__| | | \ \ / /  
 | |  | |_| |\ V /   
-|_|   \__,_| \_/              
-God Mode Ai. 
+|_|   \__,_| \_/
+          
+  God Mode Ai. 
 
-🤖 rUv - Your Intelligent Agent for Creation"
-🌐 Global AI Domination Initiated..."
-
+🤖 rUv - Your Intelligent Agent for Creation...
+🌐 Global AI Domination Initiated...
+```
 # rUv-dev: AI-Powered Development Environment 🚀
 
 Welcome to rUv-dev, an innovative development environment that leverages the power of AI to revolutionize your coding experience! 🤖💻
