@@ -4,17 +4,9 @@
   "dotfiles.targetPath": "~/dotfiles",
   "dotfiles.installCommand": "~/dotfiles/setup.sh",
 
-  // Other configuration options...
   "extensions": [
     // List of extensions to install
   ],
 
-  "postCreateCommand": "bash ~/dotfiles/setup.sh",
-
-  // Docker configuration
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspace",
-
-  // Other settings and configurations...
+  "postCreateCommand": "bash ~/dotfiles/setup.sh"
 }
