@@ -1,0 +1,15 @@
+# Work-specific Open Interpreter models
+alias oiwork='interpreter --model gpt-4'
+alias oiwork2='interpreter --model claude-v1'
+
+# Work-specific Jupyter Notebook directories
+alias jnbwork='cd /home/user/Workspace/CompanyName/Notebooks && jupyter notebook'
+alias jnbproject1='cd /home/user/Workspace/CompanyName/Project1/Notebooks && jupyter notebook'
+
+# Work-specific knowledge base
+alias kbaddwork='cp "$1" /home/user/Workspace/CompanyName/kb/'  
+alias kblswork='ls /home/user/Workspace/CompanyName/kb'
+alias kbcatwork='cat /home/user/Workspace/CompanyName/kb/"$1"'
+
+# Work-specific CI/CD pipeline
+alias citwork='bash /home/user/Workspace/CompanyName/ci-cd/run-tests.sh'
