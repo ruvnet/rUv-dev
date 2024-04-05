@@ -719,7 +719,7 @@ setup_venv() {
   echo "Setting up virtual environment for Jupyter..."
   python3 -m venv jupyter_venv
   source jupyter_venv/bin/activate
-  pip install open-interpreter jupyter notebook
+  pip install open-interpreter jupyter notebook 'pydantic<2'
   echo "Virtual environment set up successfully!"
 }
 
@@ -729,7 +729,7 @@ setup_venv() {
   echo "Setting up virtual environment for Jupyter..."
   python3 -m venv jupyter_venv
   source jupyter_venv/bin/activate
-  pip install open-interpreter jupyter notebook
+  pip install open-interpreter jupyter notebook 'pydantic<2'
   echo "Virtual environment set up successfully!"
 }
 
@@ -803,7 +803,7 @@ setup_oi_venv() {
   echo "Setting up virtual environment for Open Interpreter..."
   python3 -m venv oi_venv
   source oi_venv/bin/activate
-  pip install open-interpreter
+  pip install open-interpreter 'pydantic<2'
   echo "Virtual environment set up successfully!"
 }
 
@@ -848,7 +848,7 @@ fi
 
 if $install_packages; then
     echo "🤖 Starting Install Process..."
-    pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow
+    pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow 'pydantic<2'
 fi
 
 if $configure; then
@@ -896,7 +896,7 @@ if [ "$install_packages" = false ] && [ "$configure" = false ] && [ "$setup" = f
                 ;;
             i|-i|--install-packages)
                 echo "🤖 Starting Install Process"
-                pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow
+                pip install open-interpreter notebook openai litellm matplotlib numpy pandas pillow requests beautifulsoup4 scikit-learn tensorflow 'pydantic<2'
                 ;;
             c|-c|--configure)
                 perform_configuration
