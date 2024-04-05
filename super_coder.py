@@ -3,7 +3,7 @@ from interpreter import interpreter
 def launch_super_coder():
     while True:
         print("\nSuper Coder Menu:")
-        print("1. Create New Application")
+        print("1. Create New Application from Prompt")
         print("2. Load from Template")
         print("3. Autonomous Coding")
         print("4. Advanced Settings")
@@ -16,8 +16,29 @@ def launch_super_coder():
 
         if super_coder_choice == "1":
             app_name = input("Enter the name of the new application: ")
-            # Logic for creating a new application directory
+            app_prompt = input("Enter the prompt to specify the application: ")
+            
             print(f"✅ New application {app_name} setup initiated.")
+            
+            while True:
+                print("\nDo you want to:")
+                print("1. Continue development")
+                print("2. Provide guidance")
+                print("3. Return to Super Coder Menu")
+                choice = input("Enter your choice (1-3): ")
+
+                if choice == "1":
+                    print("Continuing development...")
+                    response = interpreter.chat(f"Continue developing the {app_name} application based on the prompt: {app_prompt}")
+                    print(response)
+                elif choice == "2":
+                    guidance = input("Enter your guidance: ")
+                    response = interpreter.chat(f"Provide guidance for the current development of {app_name}: {guidance}")
+                    print(response)
+                elif choice == "3":
+                    break
+                else:
+                    print("Invalid choice. Please try again.")
 
         elif super_coder_choice == "2":
             print("\nAvailable Templates:")
@@ -49,8 +70,9 @@ def launch_super_coder():
             print("Autonomous Coding Mode")
             prompt = input("Enter your coding prompt: ")
             auto_steps = int(input("Enter the number of automatic steps before user input (0 for manual mode): "))
+            additional_steps = int(input("Enter the number of additional steps after the initial steps (0 for no additional steps): "))
 
-            def autonomous_coding(prompt, steps):
+            def autonomous_coding(prompt, steps, additional_steps):
                 if steps == 0:
                     while True:
                         print("\nDo you want to:")
@@ -76,9 +98,16 @@ def launch_super_coder():
                         print(f"\nAutonomous Coding Step {i+1}/{steps}")
                         response = interpreter.chat(f"Continue developing the code autonomously based on the prompt: {prompt}")
                         print(response)
-                    autonomous_coding(prompt, 0)
+                    
+                    if additional_steps > 0:
+                        for i in range(additional_steps):
+                            print(f"\nAdditional Autonomous Coding Step {i+1}/{additional_steps}")
+                            response = interpreter.chat(f"Continue developing the code autonomously based on the prompt: {prompt}")
+                            print(response)
+                    
+                    autonomous_coding(prompt, 0, 0)
 
-            autonomous_coding(prompt, auto_steps)
+            autonomous_coding(prompt, auto_steps, additional_steps)
 
         elif super_coder_choice == "4":
             # Placeholder for advanced settings
