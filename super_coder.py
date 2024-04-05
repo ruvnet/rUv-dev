@@ -69,9 +69,20 @@ def launch_super_coder():
         elif super_coder_choice == "3":
             print("Autonomous Coding Mode")
             prompt = input("Enter your coding prompt: ")
-            auto_steps = int(input("Enter the number of automatic steps before user input (0 for manual mode): "))
-            additional_steps = int(input("Enter the number of additional steps after the initial steps (0 for no additional steps): "))
-
+            
+            while True:
+                try:
+                    auto_steps = int(input("Enter the number of automatic steps before user input (0 for manual mode): "))
+                    break
+                except ValueError:
+                    print("Invalid input. Please enter a valid integer.")
+            
+            while True:
+                try:
+                    additional_steps = int(input("Enter the number of additional steps after the initial steps (0 for no additional steps): "))
+                    break
+                except ValueError:
+                    print("Invalid input. Please enter a valid integer.")
             def autonomous_coding(prompt, steps, additional_steps):
                 if steps == 0:
                     while True:
