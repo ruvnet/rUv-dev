@@ -253,7 +253,7 @@ def main():
             ("Perform initial setup", ["-s", "--setup", "setup", "3"]),
             ("Configure liteLLM", ["--llm", "llm", "4"]),
             ("Configure Open Interpreter", ["--oi", "oi", "5"]),
-            ("Configure Jupyter", ["--jupyter", "jupyter", "6"]),
+            ("Jupyter Notebooks", ["--jupyter", "jupyter", "6"]),
             ("Launch Super Coder", ["--super-coder", "super-coder", "7"]),
             ("Quit setup", ["-q", "--quit", "quit", "8"]),
         ]
