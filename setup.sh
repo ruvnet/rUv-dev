@@ -205,7 +205,7 @@ configure_open_interpreter() {
 
 # Function to configure Jupyter
 configure_jupyter() {
-  # setup_venv  # Set up and activate the virtual environment
+  #setup_venv  # Set up and activate the virtual environment
   python3 jupyter_config.py
   deactivate  # Deactivate the virtual environment
   echo "Virtual environment deactivated."
@@ -223,7 +223,7 @@ setup_venv() {
 
 # Function to launch Super Coder
 launch_super_coder() {
-  setup_oi_venv  # Set up and activate the Open Interpreter virtual environment
+  # setup_oi_venv  # Set up and activate the Open Interpreter virtual environment
   python3 super_coder.py
   deactivate_oi_venv  # Deactivate the Open Interpreter virtual environment
   echo "Super Coder session completed successfully!"
