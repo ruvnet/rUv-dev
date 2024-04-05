@@ -5,8 +5,9 @@ def configure_jupyter():
         print("\nJupyter Configuration Menu:")
         print("1. Select Notebook Template")
         print("2. Optimize Jupyter Settings")
-        print("3. Return to Main Menu")
-        jupyter_choice = input("Enter your choice (1-3): ")
+        print("3. Create Notebook from Prompt")
+        print("4. Return to Main Menu")
+        jupyter_choice = input("Enter your choice (1-4): ")
 
         if jupyter_choice == "1":
             while True:
@@ -41,7 +42,7 @@ def configure_jupyter():
                 while True:
                     print("\nDo you want to:")
                     print("1. Continue development")
-                    print("2. Give Guidance")
+                    print("2. Get Guidance")
                     print("3. Return to Notebook Templates")
                     print("4. Return to Main Menu")
                     next_choice = input("Enter your choice (1-4): ")
@@ -71,6 +72,30 @@ def configure_jupyter():
             print("✅ Jupyter settings optimization simulated. Adjust this section to apply real settings.")
 
         elif jupyter_choice == "3":
+            print("\nCreate Notebook from Prompt")
+            prompt = input("Enter your prompt to create a notebook: ")
+            interpreter.chat(f"Create a Jupyter notebook based on the following prompt: {prompt}")
+
+            while True:
+                print("\nDo you want to:")
+                print("1. Continue development")
+                print("2. Get Guidance")
+                print("3. Return to Main Menu")
+                next_choice = input("Enter your choice (1-3): ")
+
+                if next_choice == "1":
+                    print("Continuing development...")
+                    interpreter.chat("Continue developing the Jupyter notebook based on the previous instructions.")
+                elif next_choice == "2":
+                    print("Providing guidance...")
+                    guidance = input("Enter your guidance or additional instructions: ")
+                    interpreter.chat(f"Provide guidance for the current step: {guidance}")
+                elif next_choice == "3":
+                    break
+                else:
+                    print("Invalid choice. Please try again.")
+
+        elif jupyter_choice == "4":
             print("Returning to the main menu...")
             break
         else:
