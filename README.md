@@ -19,7 +19,7 @@ Welcome to rUv-dev, an innovative development environment that leverages the pow
 
 To quickly start a new codespace with rUv-dev, simply press the "," (comma) key on your keyboard while viewing this repository on GitHub. This will automatically create a new codespace with all the necessary configurations and dotfiles set up for you.
 
-To run the `ruv_setup.py` script and set up the rUv-dev environment, follow these instructions:
+To run the `ruv_setup.py -i` script and set up the rUv-dev environment, follow these instructions:
 
 ## Introduction
 
