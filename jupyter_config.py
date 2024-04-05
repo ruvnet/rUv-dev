@@ -41,16 +41,21 @@ def configure_jupyter():
                 while True:
                     print("\nDo you want to:")
                     print("1. Continue development")
-                    print("2. Return to Notebook Templates")
-                    print("3. Return to Main Menu")
-                    next_choice = input("Enter your choice (1-3): ")
+                    print("2. Give Guidance")
+                    print("3. Return to Notebook Templates")
+                    print("4. Return to Main Menu")
+                    next_choice = input("Enter your choice (1-4): ")
 
                     if next_choice == "1":
                         print("Continuing development...")
                         interpreter.chat("Continue developing the Jupyter notebook based on the previous instructions.")
                     elif next_choice == "2":
-                        break
+                        print("Providing guidance...")
+                        guidance = input("Enter your guidance or additional instructions: ")
+                        interpreter.chat(f"Provide guidance for the current step: {guidance}")
                     elif next_choice == "3":
+                        break
+                    elif next_choice == "4":
                         return
                     else:
                         print("Invalid choice. Please try again.")
