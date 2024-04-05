@@ -19,16 +19,7 @@ Welcome to rUv-dev, an innovative development environment that leverages the pow
 
 To quickly start a new codespace with rUv-dev, simply press the "," (comma) key on your keyboard while viewing this repository on GitHub. This will automatically create a new codespace with all the necessary configurations and dotfiles set up for you.
 
-### Step 1
-```
-bash setup.sh --install-packages
-```
-
-### Step 2
-```
-bash setup.sh --configure
-```
-
+To run the `ruv_setup.py` script and set up the rUv-dev environment, follow these instructions:
 
 ## Introduction
 
@@ -57,7 +48,6 @@ With rUv-dev, you can:
 ## AI-Based Development with Open Interpreter and Jupyter
 
 At the core of rUv-dev are two powerful tools: Open Interpreter and Jupyter Notebook.
-
 
 ## Features
 
@@ -96,6 +86,81 @@ rUv-dev provides a user-friendly setup script (`setup.sh`) that simplifies the p
 - 📦 Install required packages and dependencies with a single command.
 - 🔧 Configure environment variables and settings for Open Interpreter, liteLLM, and other tools.
 - 🎨 Customize your development environment with a variety of options and preferences.
+
+## Running rUv Dev
+
+1. Open a terminal or command prompt.
+
+2. Navigate to the directory where the `ruv_setup.py` script is located using the `cd` command. For example:
+   ```
+   cd /path/to/ruv_setup.py
+   ```
+
+3. Make sure you have Python installed on your system. You can check the Python version by running:
+   ```
+   python --version
+   ```
+
+4. Run the `ruv_setup.py` script with the desired options or without any options to enter interactive mode. Here are some examples:
+
+   - To show the help menu:
+     ```
+     python ruv_setup.py -h
+     ```
+
+   - To install the required packages:
+     ```
+     python ruv_setup.py -i
+     ```
+
+   - To configure the environment variables and settings:
+     ```
+     python ruv_setup.py -c
+     ```
+
+   - To perform the initial setup with guided steps:
+     ```
+     python ruv_setup.py -s
+     ```
+
+   - To configure liteLLM:
+     ```
+     python ruv_setup.py --llm
+     ```
+
+   - To configure Open Interpreter:
+     ```
+     python ruv_setup.py --oi
+     ```
+
+   - To configure Jupyter:
+     ```
+     python ruv_setup.py --jupyter
+     ```
+
+   - To launch Super Coder for automated code generation:
+     ```
+     python ruv_setup.py --super-coder
+     ```
+
+   - To enter interactive mode and choose options from a menu:
+     ```
+     python ruv_setup.py
+     ```
+
+5. Follow the prompts and instructions provided by the script based on the selected options.
+
+   - If you choose to configure the environment (`-c` or `--configure`), you will be prompted to enter your OpenAI API key and Anthropic API key. If you don't have the keys, you can press Enter to skip.
+
+   - If you choose to perform the initial setup (`-s` or `--setup`), the script will clone the rUv-dev repository and perform the necessary configurations.
+
+   - In interactive mode, you can select options from the menu by entering the corresponding number or option name.
+
+6. Once the script finishes executing, it will display success messages and any additional instructions if necessary.
+
+7. If the script mentions sourcing `~/.bashrc` or restarting your terminal, make sure to do so for the changes to take effect globally.
+
+Note: Make sure you have the necessary permissions to run the script and install packages. If you encounter any permission-related issues, you may need to run the script with administrative privileges using `sudo` or as a user with appropriate permissions.
 
 ## Using Dotfiles
 
