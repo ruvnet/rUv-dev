@@ -2,7 +2,7 @@
 #
 # setup.sh - Set up rUv-dev environment
 #
-# Usage: setup.sh [-h|--help] [-i|--install-packages] [-c|--configure] [-s|--setup] [-q|--quit] [--llm] [--oi] [--jupyter]
+# Usage: setup.sh [-h|--help] [-i|--install-packages] [-c|--configure] [-s|--setup] [-q|--quit] [--llm] [--oi] [--jupyter] [--super-coder]
 #
 # Options:
 #   -h, --help                Show help menu
@@ -13,6 +13,7 @@
 #   --llm                     Configure liteLLM
 #   --oi                      Configure Open Interpreter
 #   --jupyter                 Configure Jupyter
+#   --super-coder             Launch Super Coder for automated code generation
 
 set -o errexit  # Exit on error
 set -o nounset  # Exit on unset variables
@@ -42,6 +43,7 @@ show_help() {
   echo "  --llm                    Configure liteLLM"
   echo "  --oi                     Configure Open Interpreter"
   echo "  --jupyter                Configure Jupyter"
+  echo "  --super-coder            Launch Super Coder for automated code generation"
 }
 
 # Function to print error messages to stderr and exit
@@ -626,6 +628,8 @@ configure_open_interpreter() {
 
 # Function to configure Jupyter
 configure_jupyter() {
+  setup_venv  # Set up and activate the virtual environment
+
   while true; do
     echo ""
     echo "Jupyter Configuration Menu:"
@@ -650,22 +654,30 @@ configure_jupyter() {
         case $template_choice in
           1)
             echo "Generating AI-Powered Data Analysis Notebook..."
-            interpreter "Create a Jupyter notebook for AI-powered data analysis using Open Interpreter and liteLLM. Include data loading, preprocessing, visualization, and insights generation." > data_analysis_notebook.ipynb
+            source jupyter_venv/bin/activate  # Activate the virtual environment
+            interpreter -ci -y "Create a Jupyter notebook for AI-powered data analysis using Open Interpreter and liteLLM. Include data loading, preprocessing, visualization, and insights generation." > data_analysis_notebook.ipynb
+            deactivate  # Deactivate the virtual environment
             echo "✅ AI-Powered Data Analysis Notebook generated successfully!"
             ;;
           2)
             echo "Generating LLM-Based Text Generation Notebook..."
-            interpreter "Create a Jupyter notebook for text generation using liteLLM. Include text loading, preprocessing, fine-tuning, and generation examples." > text_generation_notebook.ipynb
+            source jupyter_venv/bin/activate  # Activate the virtual environment
+            interpreter -ci -y "Create a Jupyter notebook for text generation using liteLLM. Include text loading, preprocessing, fine-tuning, and generation examples." > text_generation_notebook.ipynb
+            deactivate  # Deactivate the virtual environment
             echo "✅ LLM-Based Text Generation Notebook generated successfully!"
             ;;
           3)
             echo "Generating Machine Learning with Gradio UI Notebook..."
-            interpreter "Create a Jupyter notebook for machine learning with a Gradio UI. Include model training, evaluation, and an interactive UI for predictions." > ml_gradio_notebook.ipynb
+            source jupyter_venv/bin/activate  # Activate the virtual environment
+            interpreter -ci -y "Create a Jupyter notebook for machine learning with a Gradio UI. Include model training, evaluation, and an interactive UI for predictions." > ml_gradio_notebook.ipynb
+            deactivate  # Deactivate the virtual environment
             echo "✅ Machine Learning with Gradio UI Notebook generated successfully!"
             ;;
           4)
             echo "Generating God Mode Notebook..."
-            interpreter "Create a Jupyter notebook for advanced AI and PyTorch applications. Include complex model architectures, training pipelines, and the mergekit library for enhanced functionality." > god_mode_notebook.ipynb
+            source jupyter_venv/bin/activate  # Activate the virtual environment
+            interpreter -ci -y "Create a Jupyter notebook for advanced AI and PyTorch applications. Include complex model architectures, training pipelines, and the mergekit library for enhanced functionality." > god_mode_notebook.ipynb
+            deactivate  # Deactivate the virtual environment
             echo "✅ God Mode Notebook generated successfully!"
             ;;
           5)
@@ -696,8 +708,111 @@ configure_jupyter() {
     esac
   done
 
+  deactivate  # Deactivate the virtual environment
+  echo "Virtual environment deactivated."
   echo "✅ Jupyter configuration completed successfully!"
 }
+
+
+# Function to set up and activate the virtual environment
+setup_venv() {
+  echo "Setting up virtual environment for Jupyter..."
+  python3 -m venv jupyter_venv
+  source jupyter_venv/bin/activate
+  pip install open-interpreter jupyter notebook
+  echo "Virtual environment set up successfully!"
+}
+
+
+# Function to set up and activate the virtual environment
+setup_venv() {
+  echo "Setting up virtual environment for Jupyter..."
+  python3 -m venv jupyter_venv
+  source jupyter_venv/bin/activate
+  pip install open-interpreter jupyter notebook
+  echo "Virtual environment set up successfully!"
+}
+
+# Function to launch Super Coder
+launch_super_coder() {
+  setup_oi_venv  # Set up and activate the Open Interpreter virtual environment
+
+  while true; do
+    echo ""
+    echo "Super Coder Menu:"
+    echo "1. Create New Application"
+    echo "2. Load from Template"
+    echo "3. Execution Mode"
+    echo "4. Advanced Settings"
+    echo "5. Manage Prompt Folder"
+    echo "6. Return to Main Menu"
+    echo ""
+    read -p "Enter your choice (1-6): " super_coder_choice
+
+    case $super_coder_choice in
+      1)
+        echo ""
+        read -p "Enter the name of the new application: " app_name
+        mkdir -p "$app_name"
+        cd "$app_name" || exit
+        echo "✅ New application directory created: $app_name"
+        ;;
+      2)
+        echo ""
+        echo "Available Templates:"
+        echo "1. PyTorch Application"
+        echo "2. Machine Learning Pipeline"
+        echo "3. Mergekit Integration"
+        echo "4. Go Back"
+        echo ""
+        read -p "Enter your choice (1-4): " template_choice
+
+        case $template_choice in
+          1)
+            echo "Loading PyTorch Application template..."
+            interpreter -ci "Create a PyTorch application template with basic structure and dependencies." > pytorch_app.py
+            echo "✅ PyTorch Application template loaded successfully!"
+            ;;
+          2)
+            echo "Loading Machine Learning Pipeline template..."
+            interpreter -ci "Create a machine learning pipeline template with data preprocessing, model training, and evaluation steps." > ml_pipeline.py
+            echo "✅ Machine Learning Pipeline template loaded successfully!"
+            ;;
+          3)
+            echo "Loading Mergekit Integration template..."
+            interpreter -ci "Create a template that demonstrates the integration of Mergekit library for advanced functionality." > mergekit_integration.py
+            echo "✅ Mergekit Integration template loaded successfully!"
+            ;;
+          4)
+            ;;
+          *)
+            echo "Invalid choice. Please try again."
+            ;;
+        esac
+        ;;
+      # ... (rest of the function)
+    esac
+  done
+
+  deactivate_oi_venv  # Deactivate the Open Interpreter virtual environment
+  echo "Super Coder session completed successfully!"
+}
+
+# Function to set up and activate the Open Interpreter virtual environment
+setup_oi_venv() {
+  echo "Setting up virtual environment for Open Interpreter..."
+  python3 -m venv oi_venv
+  source oi_venv/bin/activate
+  pip install open-interpreter
+  echo "Virtual environment set up successfully!"
+}
+
+# Function to deactivate the Open Interpreter virtual environment
+deactivate_oi_venv() {
+  deactivate
+  echo "Virtual environment deactivated."
+}
+
 
 # Initialize variables for command line arguments
 install_packages=false
@@ -707,6 +822,7 @@ quit=false
 configure_llm=false
 configure_oi=false
 configure_jupyter=false
+launch_super_coder=false
 
 # Process command line arguments
 while [[ "$#" -gt 0 ]]; do
@@ -718,6 +834,7 @@ while [[ "$#" -gt 0 ]]; do
         --llm) configure_llm=true ;;
         --oi) configure_oi=true ;;
         --jupyter) configure_jupyter=true ;;
+        --super-coder) launch_super_coder=true ;;
         -q|--quit) quit=true; break ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
@@ -763,8 +880,13 @@ if $configure_jupyter; then
     configure_jupyter
 fi
 
+if $launch_super_coder; then
+    echo "🚀 Launching Super Coder..."
+    launch_super_coder
+fi
+
 # If no arguments are provided, fall back to interactive mode
-if [ "$install_packages" = false ] && [ "$configure" = false ] && [ "$setup" = false ] && [ "$configure_llm" = false ] && [ "$configure_oi" = false ] && [ "$configure_jupyter" = false ]; then
+if [ "$install_packages" = false ] && [ "$configure" = false ] && [ "$setup" = false ] && [ "$configure_llm" = false ] && [ "$configure_oi" = false ] && [ "$configure_jupyter" = false ] && [ "$launch_super_coder" = false ]; then
     echo "Entering interactive mode..."
     while true; do
         read -p "Enter an option (h for help): " choice
@@ -798,6 +920,10 @@ if [ "$install_packages" = false ] && [ "$configure" = false ] && [ "$setup" = f
             jupyter|--jupyter)
                 echo "🔧 Configuring Jupyter..."
                 configure_jupyter
+                ;;
+            super-coder|--super-coder)
+                echo "🚀 Launching Super Coder..."
+                launch_super_coder
                 ;;
             q|-q|--quit)
                 echo "Quitting setup..."
