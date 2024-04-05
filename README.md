@@ -4,7 +4,7 @@
 | |  | |_| |\ V /   
 |_|   \__,_| \_/
           
- Ai in God Mode
+ Ai | God Mode
  AI-Powered Coding Environment
 
 🦄 Starting...
