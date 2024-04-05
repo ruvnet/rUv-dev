@@ -2,14 +2,28 @@
   "name": "rUv Ai Development Environment",
   "dotfiles.repository": "https://github.com/ruvnet/rUv-dev",
   "dotfiles.targetPath": "~/",
- //  "dotfiles.installCommand": "./setup.sh",
+  // If "setup.sh" is meant to be a universal setup script, uncomment the line below.
+  // "dotfiles.installCommand": "./setup.sh",
 
   "extensions": [
     // List of extensions to install
   ],
 
-//  "postCreateCommand": "bash setup.sh",
+  // Assuming "setup.sh" prepares the environment, you might need to adjust this
+  // to include "pip install ." and "interpreter -y" commands if applicable.
+  // "postCreateCommand": "bash setup.sh",
 
   "workspaceFolder": "/workspaces/rUv-dev",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/rUv-dev,type=bind,consistency=cached"
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/rUv-dev,type=bind,consistency=cached",
+  
+  "dockerFile": "DockerFile",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+  
+  // If these commands need to be run immediately after creation and attachment,
+  // consider integrating them into setup scripts or specifying them here directly.
+  "onCreateCommand": "pip install .",
+  "postAttachCommand": "interpreter -y"
+  // Configure tool-specific properties.
+  // "customizations": {},
 }
