@@ -19,7 +19,7 @@ Welcome to rUv-dev, an innovative development environment that leverages the pow
 
 To quickly start a new codespace with rUv-dev, simply press the "," (comma) key on your keyboard while viewing this repository on GitHub. This will automatically create a new codespace with all the necessary configurations and dotfiles set up for you.
 
-  1. Type "," on my your keepboard on GitHub or clone the repo. 
+  1. Type "," on my your keyboard on GitHub or clone the repo. 
   2. Open ruv_step.py in Codespace or VScode, run the applicaiton. 1. Choose Install
   3. After install select 2. Configure environment and add your LLM keys. 
   4. If you have any API erros, manually setup the keys. `export OPENAI_API_KEY='YOUR_API_KEY'` 
