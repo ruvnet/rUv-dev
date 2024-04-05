@@ -190,9 +190,16 @@ def configure_open_interpreter():
     subprocess.run(["python3", "open_interpreter_config.py"])
 
 def configure_jupyter():
-    subprocess.run(["python3", "jupyter_config.py"])
-    print("Virtual environment deactivated.")
-    print("✅ Jupyter configuration completed successfully!")
+    # Path to your jupyter_config.py file
+    jupyter_config_path = "jupyter_config.py"
+    try:
+        # Attempt to run the jupyter_config.py script
+        subprocess.run(["python3", jupyter_config_path], check=True)
+        print("Virtual environment deactivated.")
+        print("✅ Jupyter configuration completed successfully!")
+    except subprocess.CalledProcessError as e:
+        # Handle errors in the subprocess execution, for example, if jupyter_config.py encounters an error
+        print("Failed to configure Jupyter Notebook:", e)
 
 def launch_super_coder():
     subprocess.run(["python3", "super_coder.py"])
@@ -247,55 +254,48 @@ def main():
 
     if not any(vars(args).values()):
         print("Entering interactive mode...")
-        options = [
-            ("Install packages", ["-i", "--install-packages", "install", "1"]),
-            ("Configure environment", ["-c", "--configure", "configure", "2"]),
-            ("Perform initial setup", ["-s", "--setup", "setup", "3"]),
-            ("Configure liteLLM", ["--llm", "llm", "4"]),
-            ("Configure Open Interpreter", ["--oi", "oi", "5"]),
-            ("Jupyter Notebooks", ["--jupyter", "jupyter", "6"]),
-            ("Launch Super Coder", ["--super-coder", "super-coder", "7"]),
-            ("Quit setup", ["-q", "--quit", "quit", "8"]),
-        ]
         while True:
-            print("Available options:")
-            for option, aliases in options:
-                print(f"{aliases[-1]}. {option}")
+            print("\nAvailable options:")
+            print("1. Install packages")
+            print("2. Configure environment")
+            print("3. Perform initial setup")
+            print("4. Configure liteLLM")
+            print("5. Configure Open Interpreter")
+            print("6. Jupyter Notebooks")
+            print("7. Launch Super Coder")
+            print("8. Quit setup")
             choice = input("Enter an option (h for help): ")
-            if choice.lower() in ["-h", "--help", "h", "help"]:
-                show_help()
-            else:
-                for option, aliases in options:
-                    if choice.lower() in aliases:
-                        if option == "Install packages":
-                            print("🤖 Starting Install Process")
-                            subprocess.run(["pip", "install", "open-interpreter", "notebook", "openai", "litellm", "matplotlib", "numpy", "pandas", "pillow", "requests", "beautifulsoup4", "scikit-learn", "tensorflow", "pydantic>=1.0.0,<2.0.0"])
-                        elif option == "Configure environment":
-                            perform_configuration()
-                        elif option == "Perform initial setup":
-                            if os.path.exists(os.path.expanduser("~/.rUv-dev")):
-                                ask_initial_setup()
-                            else:
-                                perform_initial_setup()
-                                perform_configuration()
-                        elif option == "Configure liteLLM":
-                            print("🔧 Configuring liteLLM...")
-                            configure_litellm()
-                        elif option == "Configure Open Interpreter":
-                            print("🔧 Configuring Open Interpreter...")
-                            configure_open_interpreter()
-                        elif option == "Configure Jupyter":
-                            print("🔧 Configuring Jupyter...")
-                            configure_jupyter()
-                        elif option == "Launch Super Coder":
-                            print("🚀 Launching Super Coder...")
-                            launch_super_coder()
-                        elif option == "Quit setup":
-                            print("Quitting setup...")
-                            sys.exit(0)
-                        break
+
+            if choice == "1":
+                print("🤖 Starting Install Process")
+                subprocess.run(["pip", "install", "open-interpreter", "notebook", "openai", "litellm", "matplotlib", "numpy", "pandas", "pillow", "requests", "beautifulsoup4", "scikit-learn", "tensorflow", "pydantic>=1.0.0,<2.0.0"])
+            elif choice == "2":
+                print("🔌 Applying rUv-dev configurations...")
+                perform_configuration()
+            elif choice == "3":
+                if os.path.exists(os.path.expanduser("~/.rUv-dev")):
+                    ask_initial_setup()
                 else:
-                    print("Invalid choice. Please try again.")
+                    perform_initial_setup()
+                    perform_configuration()
+            elif choice == "4":
+                print("🔧 Configuring liteLLM...")
+                configure_litellm()
+            elif choice == "5":
+                print("🔧 Configuring Open Interpreter...")
+                configure_open_interpreter()
+            elif choice == "6":
+                print("🔧 Configuring Jupyter...")
+                configure_jupyter()
+            elif choice == "7":
+                print("🚀 Launching Super Coder...")
+                launch_super_coder()
+            elif choice == "8":
+                print("Quitting setup...")
+                sys.exit(0)
+            else:
+                print("Invalid choice. Please try again or enter 'h' for help.")
+
 
 if __name__ == "__main__":
     print("""
