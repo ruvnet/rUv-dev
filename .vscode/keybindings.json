@@ -1,7 +1,12 @@
 [
-  {
-    "key": "alt+shift+b",
-    "command": "workbench.action.tasks.runTask",
-    "args": "Simple Browser"
-  }
+    {
+        "key": "ctrl+k v",
+        "command": "livePreview.start.preview.atFile",
+        "when": "editorTextFocus && !notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "livePreview.start.preview.atFile",
+        "when": "editorTextFocus && !notebookEditorFocused"
+    }
 ]

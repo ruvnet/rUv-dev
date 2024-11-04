@@ -7,9 +7,66 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-vscode.live-preview"
-            ]
+                "ms-vscode.live-server",
+                "ms-vscode.live-preview",
+                "saoudrizwan.claude-dev",
+                "ms-vscode-remote.remote-containers",
+                "ms-azuretools.vscode-docker",
+                "github.codespaces",
+                "github.vscode-github-actions",
+                "ms-vscode-remote.remote-ssh",
+                "ms-vscode.remote-explorer",
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                "ms-vscode.remote-server",
+                "ms-vscode-remote.remote-ssh-edit",
+                "github.copilot",
+                "github.copilot-chat",
+                "github.copilot-labs"
+            ],
+            "settings": {
+                "livePreview.openPreviewTarget": "Beside Editor",
+                "livePreview.autoRefreshPreview": "On Changes to Saved Files",
+                "livePreview.showPreviewOnStartup": true,
+                "livePreview.defaultPreviewPath": "/test.html",
+                "livePreview.portNumber": 3000,
+                "liveServer.settings.donotShowInfoMsg": true,
+                "liveServer.settings.donotVerifyTags": true,
+                "livePreview.debugOnExternalPreview": false,
+                "livePreview.autoOpenPreviewTarget": false,
+                "window.openFilesInNewWindow": "off",
+                "window.openFoldersInNewWindow": "off",
+                "workbench.editor.openSideBySideDirection": "right",
+                "github.copilot.enable": {
+                    "*": true,
+                    "plaintext": true,
+                    "markdown": true,
+                    "scminput": false
+                },
+                "github.copilot.editor.enableAutoCompletions": true,
+                "remote.containers.defaultExtensions": [
+                    "ms-vscode.live-server",
+                    "ms-vscode.live-preview",
+                    "saoudrizwan.claude-dev",
+                    "ms-vscode-remote.remote-containers",
+                    "ms-azuretools.vscode-docker",
+                    "github.codespaces",
+                    "github.copilot",
+                    "github.copilot-chat",
+                    "github.copilot-labs"
+                ],
+                "dev.containers.defaultFeatures": {
+                    "docker-in-docker": "latest",
+                    "git": "latest",
+                    "github-cli": "latest"
+                }
+            }
         }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/python:1": {},
+        "ghcr.io/devcontainers/features/node:1": {}
     },
     "forwardPorts": [3000, 3001, 3002, 3003, 3004, 3005],
     "portsAttributes": {

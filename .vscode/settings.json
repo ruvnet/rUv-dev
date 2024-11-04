@@ -1,6 +1,35 @@
 {
-    "livePreview.serverRoot": "${workspaceFolder}",
-    "livePreview.defaultPreviewPath": "/test.html",
     "workbench.startupEditor": "none",
-    "task.allowAutomaticTasks": "on"
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor",
+        "*.html": "default"
+    },
+    "workbench.panel.defaultLocation": "right",
+    "workbench.sideBar.location": "left",
+    "workbench.statusBar.visible": true,
+    "workbench.editor.showTabs": true,
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "livePreview.defaultPreviewPath": "/test.html",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true,
+    "livePreview.openPreviewTarget": "Beside Editor",
+    "livePreview.autoRefreshPreview": "On Changes to Saved Files",
+    "livePreview.showPreviewOnStartup": true,
+    "livePreview.customExternalBrowser": "none",
+    "livePreview.portNumber": 3000,
+    "livePreview.debugOnExternalPreview": false,
+    "livePreview.autoOpenPreviewTarget": false,
+    "task.allowAutomaticTasks": "on",
+    "editor.linkedEditing": true,
+    "html.autoCreateQuotes": true,
+    "html.format.enable": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.preserveNewLines": true,
+    "html.format.wrapLineLength": 120,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnSave": true,
+    "window.openFilesInNewWindow": "off",
+    "window.openFoldersInNewWindow": "off",
+    "workbench.editor.openSideBySideDirection": "right"
 }

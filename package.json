@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express": "^4.21.1",
     "ws": "^8.18.0"
   }
 }

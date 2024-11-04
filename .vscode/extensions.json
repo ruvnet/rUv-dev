@@ -1,5 +1,20 @@
 {
     "recommendations": [
-        "ms-vscode.live-preview"
+        "ms-vscode.live-server",
+        "ms-vscode.live-preview",
+        "saoudrizwan.claude-dev",
+        "ms-python.python",
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "github.codespaces",
+        "github.vscode-github-actions",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode.remote-explorer",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.remote-server",
+        "ms-vscode-remote.remote-ssh-edit",
+        "github.copilot",
+        "github.copilot-chat",
+        "github.copilot-labs"
     ]
 }
