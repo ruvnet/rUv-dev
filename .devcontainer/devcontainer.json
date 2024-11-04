@@ -1,11 +1,27 @@
 {
-"name": "rUv Ai Development Environment",
-"dotfiles.repository": "https://github.com/ruvnet/rUv-dev",
-"dotfiles.targetPath": "~/",
-"extensions": [
-// List of extensions to install
-],
-"postCreateCommand": "pip install 'pydantic<2'",
-"workspaceFolder": "/workspaces/rUv-dev",
-"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/rUv-dev,type=bind,consistency=cached"
+    "name": "rUv Dev Environment",
+    "postStartCommand": "node server.js &",
+    "postAttachCommand": {
+        "server": "node server.js &"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.live-preview"
+            ]
+        }
+    },
+    "forwardPorts": [3000, 3001, 3002, 3003, 3004, 3005],
+    "portsAttributes": {
+        "3000-3005": {
+            "label": "Preview Server",
+            "onAutoForward": "notify",
+            "protocol": "http",
+            "visibility": "public"
+        }
+    },
+    "otherPortsAttributes": {
+        "onAutoForward": "notify",
+        "visibility": "public"
+    }
 }

@@ -1,0 +1,6 @@
+{
+    "livePreview.serverRoot": "${workspaceFolder}",
+    "livePreview.defaultPreviewPath": "/test.html",
+    "workbench.startupEditor": "none",
+    "task.allowAutomaticTasks": "on"
+}

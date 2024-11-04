@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Test Server",
+            "type": "shell",
+            "command": "node server.js",
+            "isBackground": true,
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": "^.*$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Server running at:",
+                    "endsPattern": "================================="
+                }
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated"
+            }
+        }
+    ]
+}
