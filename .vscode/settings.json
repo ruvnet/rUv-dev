@@ -7,7 +7,7 @@
     "workbench.panel.defaultLocation": "right",
     "workbench.sideBar.location": "left",
     "workbench.statusBar.visible": true,
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "workbench.editor.enablePreview": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "livePreview.defaultPreviewPath": "/test.html",
