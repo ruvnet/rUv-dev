@@ -1,0 +1,49 @@
+{
+  "name": "create-sparc",
+  "version": "1.0.5",
+  "description": "NPX package to scaffold new projects with SPARC methodology structure",
+  "main": "src/index.js",
+  "bin": {
+    "create-sparc": "bin/index.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:unit": "jest __tests__/unit",
+    "test:integration": "jest __tests__/integration",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "sparc",
+    "scaffold",
+    "generator",
+    "project",
+    "template",
+    "npx"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^9.4.1",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^8.2.5",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "jest": "^29.5.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    ".roo/",
+    ".roomodes",
+    "LICENSE",
+    "README.md"
+  ]
+}

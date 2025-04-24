@@ -1,313 +1,264 @@
-_ __ _   ___   __  
-| '__| | | \ \ / /  
-| |  | |_| |\ V /   
-|_|   \__,_| \_/
-           
- Ai | God Mode
- AI-Powered Coding Environment
+# create-sparc
 
-🦄 Starting...
-🤖 rUv - Your Intelligent Agent for Creation...
-🌐 Global AI Domination Initiated...
+> **Transform your development workflow with SPARC methodology and AI-powered assistance**
+
+`create-sparc` is a powerful Node.js toolkit that revolutionizes how you build software by integrating the structured SPARC methodology with advanced AI assistance through Roo Code. This combination enables developers to create modular, secure, and maintainable applications with unprecedented efficiency.
+
+## Installation
+
+You don't need to install this package directly. Use npx to run it:
+
+```bash
+npx create-sparc init
 ```
-# rUv-dev: AI-Powered Development Environment 🚀
 
-Welcome to rUv-dev, an innovative development environment that leverages the power of AI to revolutionize your coding experience! 🤖💻
+## Why SPARC?
 
-## Quick Start
+The SPARC methodology (Specification, Pseudocode, Architecture, Refinement, Completion) breaks down complex development tasks into manageable phases, each handled by specialized AI assistants. This approach ensures:
 
-To quickly start a new codespace with rUv-dev, simply press the "," (comma) key on your keyboard while viewing this repository on GitHub. This will automatically create a new codespace with all the necessary configurations and dotfiles set up for you.
+- **Structured Development**: Clear progression through well-defined phases
+- **Modular Architecture**: Code naturally organized into maintainable components
+- **Security by Design**: No hard-coded secrets, proper configuration management
+- **Comprehensive Testing**: Built-in test-driven development practices
+- **Thorough Documentation**: Automatically generated, always up-to-date
 
-  1. Type "," on my your keyboard on GitHub or clone the repo. 
-  2. Open ruv_step.py in Codespace or VScode, run the applicaiton. `1. Choose Install`
-  3. After install select `2. Configure environment` and add your LLM keys. 
-  4. If you have any API errors, manually setup the keys. `export OPENAI_API_KEY='YOUR_API_KEY'` 
+## Prerequisites
 
-## Introduction
+### Roo Code VS Code Extension
 
-rUv-dev is a cutting-edge AI development setup for Codespace and VScode that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, liteLLM, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
+To fully leverage the SPARC methodology, you'll need the Roo Code extension for Visual Studio Code. This powerful extension provides:
 
-## The SPARC Methodology 🌟
+- **AI-powered coding assistance** with specialized modes for different development phases
+- **Context-aware interactions** that understand your project structure
+- **Integrated task management** with the Boomerang task concept
+- **Seamless file operations** directly within your editor
 
-rUv-dev now implements the powerful SPARC methodology for structured, modular software development:
+You can install the Roo Code extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline).
 
-### S - Specification
-- Clarify objectives and scope
-- Define functional requirements and edge cases
-- Establish constraints and acceptance criteria
-- Never allow hard-coded environment variables
 
-### P - Pseudocode
-- Develop high-level logic with TDD anchors
-- Create modular flow diagrams
-- Identify core functions and data structures
-- Establish clear interfaces between components
 
-### A - Architecture
-- Design extensible system diagrams
-- Define clear service boundaries
-- Establish API contracts and data flows
-- Create modular, maintainable component structures
+## Usage
 
-### R - Refinement
-- Implement with Test-Driven Development
-- Debug and optimize code
-- Perform security reviews
-- Refactor for maintainability and performance
+### Create a new project
 
-### C - Completion
-- Integrate components into a cohesive system
-- Document code, APIs, and usage
-- Monitor system performance
-- Continuously improve and maintain
+You can create a new project in two ways:
 
-## Specialized Modes
+```bash
+# Create a full project with a specific name
+npx create-sparc init my-project
 
-rUv-dev features specialized AI modes for different aspects of the development lifecycle:
+# Create only .roo and .roomodes files in the current directory
+npx create-sparc init
+```
 
-- **⚡️ SPARC Orchestrator** - Coordinates complex workflows and delegates subtasks
-- **🏗️ Architect** - Designs scalable, secure system architectures
-- **🧠 Auto-Coder** - Writes clean, efficient, modular code
-- **🧪 Tester (TDD)** - Implements Test-Driven Development
-- **🪲 Debugger** - Troubleshoots runtime bugs and logic errors
-- **🛡️ Security Reviewer** - Performs security audits and vulnerability assessments
-- **📚 Documentation Writer** - Creates clear, concise documentation
-- **🔗 System Integrator** - Merges components into a cohesive system
-- **📈 Deployment Monitor** - Observes system performance post-launch
-- **🧹 Optimizer** - Refactors and improves system performance
-- **🔐 Supabase Admin** - Manages database, authentication, and storage
-- **♾️ MCP Integration** - Connects to external services through MCP interfaces
+You can also use the shorthand version:
 
-## Benefits
+```bash
+npx create-sparc my-project
+```
 
-- 🚀 Boost your productivity with AI-assisted coding and code generation.
-- 🌐 Access a wide range of AI models and libraries, including OpenAI and LiteLLM.
-- 📝 Enjoy a streamlined and customizable development environment with preconfigured dotfiles.
-- 🔧 Seamlessly integrate AI-powered tools into your existing workflow.
-- 🎨 Unleash your creativity by leveraging AI to generate code snippets, solutions, and ideas.
-- 🔄 Continuously improve your development process with AI-driven insights and recommendations.
-- 🧩 Build modular, maintainable software with the SPARC methodology.
-- 🔒 Ensure secure, well-tested code with specialized AI modes.
+Options:
+- `--template <name>` - Template to use (default: "default")
+- `--skip-install` - Skip dependency installation
+- `--use-npm` - Use npm as package manager
+- `--use-yarn` - Use yarn as package manager
+- `--use-pnpm` - Use pnpm as package manager
+- `--no-git` - Skip git initialization
+- `--typescript` - Use TypeScript
+- `--no-symlink` - Disable symlink creation
 
-## Improvement to Traditional Development
+### Initialize SPARC files in an existing project
 
-Traditional development workflows often involve manual coding, searching for solutions, and setting up development environments from scratch. rUv-dev revolutionizes this approach by integrating AI-powered tools and automating repetitive tasks.
+If you want to add SPARC methodology to an existing project, you can run:
 
-With rUv-dev, you can:
+```bash
+# Navigate to your project directory
+cd my-existing-project
 
-- 💬 Use natural language to describe your coding goals, and let AI generate code snippets for you.
-- 🔍 Quickly find solutions to coding challenges with AI-powered code search and recommendations.
-- 🚀 Set up your development environment effortlessly with preconfigured dotfiles and automated setup scripts.
-- 🤝 Collaborate with AI assistants to brainstorm ideas, debug code, and optimize your workflows.
-- 📋 Follow the SPARC methodology for structured, maintainable software development.
+# Initialize SPARC files (.roo and .roomodes) without creating project structure
+npx create-sparc init
+```
 
-## AI-Based Development with Open Interpreter and Jupyter
+This will only create the necessary SPARC files in your current directory without modifying your existing project structure.
 
-At the core of rUv-dev are two powerful tools: Open Interpreter and Jupyter Notebook.
+### Add a component to an existing project
+
+```bash
+npx create-sparc add component --name MyComponent
+```
+
+Options:
+- `--name <name>` - Component name
+- `--type <type>` - Component type (default: "component")
+- `--path <path>` - Custom path for component
+
+### Get help
+
+```bash
+npx create-sparc help
+```
+
+## SPARC Methodology
+
+SPARC stands for:
+
+- **S**pecification
+- **P**seudocode
+- **A**rchitecture
+- **R**efinement
+- **C**ompletion
+
+This methodology provides a structured approach to software development, ensuring high-quality, maintainable code. SPARC enables you to deconstruct large, intricate projects into manageable subtasks, each delegated to a specialized mode.
+
+### SPARC with Roo Code Integration
+
+The SPARC methodology is fully integrated with Roo Code through the Boomerang task concept. This integration empowers you to build complex, production-ready, secure, and scalable applications by leveraging specialized AI assistants for different phases of development.
+
+By using advanced reasoning models such as Claude 3.7 Sonnet, GPT-4o, and DeepSeek for analytical tasks, alongside instructive models for coding, DevOps, testing, and implementation, you create a robust, automated, and secure workflow.
+
+### SPARC Modes
+
+When you initialize a project with `npx create-sparc init`, the following specialized modes become available in your Roo Code environment:
+
+- **⚡️ SPARC Orchestrator**: Breaks down large objectives into delegated subtasks aligned to the SPARC methodology
+- **📋 Specification Writer**: Captures full project context and translates it into modular pseudocode with TDD anchors
+- **🏗️ Architect**: Designs scalable, secure, and modular architectures based on requirements
+- **🧠 Auto-Coder**: Writes clean, efficient, modular code based on pseudocode and architecture
+- **🧪 Tester (TDD)**: Implements Test-Driven Development by writing tests first and refactoring after minimal implementation
+- **🪲 Debugger**: Troubleshoots runtime bugs, logic errors, or integration failures
+- **🛡️ Security Reviewer**: Performs static and dynamic audits to ensure secure code practices
+- **📚 Documentation Writer**: Writes concise, clear, and modular Markdown documentation
+- **🔗 System Integrator**: Merges the outputs of all modes into a working, tested, production-ready system
+- **📈 Deployment Monitor**: Observes the system post-launch, collecting performance, logs, and user feedback
+- **🧹 Optimizer**: Refactors, modularizes, and improves system performance
+- **❓ Ask**: Guides users in formulating precise, modular requests to delegate tasks
+- **🚀 DevOps**: Manages deployments and infrastructure operations across cloud providers
+- **📘 SPARC Tutorial**: Guides new users through the SPARC development process
+- **🔐 Supabase Admin**: Designs and implements database schemas, RLS policies, triggers, and functions for Supabase projects
+- **♾️ MCP Integration**: Connects to and manages external services through MCP interfaces
+
+Each mode operates within its own isolated context, ensuring focused and efficient task management while adhering to best practices—avoiding hard-coded environment variables, maintaining files under 500 lines, and ensuring a modular, extensible design.
 
 ## Features
 
-### liteLLM Integration
+- Scaffolds new projects with SPARC methodology structure
+- Sets up .roo directory and .roomodes file for SPARC modes
+- Supports TypeScript projects
+- Configurable templates
+- Symlink support for efficient file management
 
-rUv-dev seamlessly integrates with liteLLM, a lightweight and efficient library for working with large language models. With liteLLM, you can:
+## Benefits of SPARC with Roo Code
 
-- 🌐 Access a wide range of LLM providers, including OpenAI, Anthropic, Hugging Face, Cohere, Azure OpenAI, and Replicate.
-- 🔑 Securely store and manage API keys for different LLM providers.
-- 🚀 Optimize LLM performance with features like streaming, caching, and rate limiting.
-- 🔧 Customize LLM behavior with advanced settings like context window size, API versions, and proxy servers.
+### Enhanced Development Workflow
 
-### Open Interpreter Integration
+- **Specialized AI Assistance**: Each development phase is handled by a dedicated AI mode optimized for that specific task
+- **Context Isolation**: Tasks run in isolated contexts, ensuring focused and efficient problem-solving
+- **Seamless Handoffs**: Work flows naturally between different development phases
+- **Reduced Cognitive Load**: Focus on one aspect of development at a time
 
-Open Interpreter is a powerful tool that allows you to interact with AI models using natural language. With Open Interpreter, you can:
+### Technical Excellence
 
-- 💬 Describe your coding goals in plain English and let AI generate the corresponding code.
-- 🌐 Access a wide range of AI models and libraries, including OpenAI and Anthropic.
-- 🔧 Customize Open Interpreter's behavior and preferences to suit your coding style.
-- 🔒 Ensure secure code execution with isolation and safe mode settings.
-- 📊 Integrate with Jupyter Notebook for interactive coding and data visualization.
+- **Modular Architecture**: Ensures code is split into files under 500 lines
+- **Security by Design**: Prevents hard-coded secrets and environment variables
+- **Test-Driven Development**: Enforces thorough test coverage
+- **Documentation First**: Ensures comprehensive documentation
 
-### Jupyter Notebook
+### Team Collaboration
 
-Jupyter Notebook is an interactive development environment that allows you to combine code, visualizations, and explanatory text in a single document. With Jupyter Notebook, you can:
+- **Consistent Standards**: Enforces best practices across all team members
+- **Knowledge Transfer**: Documentation and code structure make onboarding easier
+- **Parallel Development**: Different team members can work on different SPARC phases simultaneously
+- **Reduced Technical Debt**: Structured approach prevents accumulation of shortcuts and workarounds
 
-- 📝 Create and share interactive coding notebooks with embedded AI-generated code snippets.
-- 📊 Visualize data and results using a variety of charting libraries and tools.
-- 🎨 Collaborate with others by sharing and versioning your Jupyter notebooks.
+## SPARC Files and Implementation
 
-### Setup and Configuration
+When you run `npx create-sparc init` without a project name, it creates two essential SPARC files:
 
-rUv-dev provides a user-friendly setup script (`setup.sh`) that simplifies the process of setting up and configuring your development environment. With the setup script, you can:
+### .roo Directory
 
-- 🚀 Perform initial setup with guided steps, including cloning the rUv-dev repository and configuring dotfiles.
-- 📦 Install required packages and dependencies with a single command.
-- 🔧 Configure environment variables and settings for Open Interpreter, liteLLM, and other tools.
-- 🎨 Customize your development environment with a variety of options and preferences.
+The `.roo` directory contains configuration files, rules, and templates that define how the SPARC methodology is applied to your project. It includes:
 
-## Running rUv Dev
+- Rules for code generation
+- Templates for components and other project elements
+- Configuration for SPARC modes
+- Guidelines for development practices
 
-1. Open a terminal or command prompt.
+### .roomodes File
 
-2. Navigate to the directory where the `ruv_setup.py` script is located using the `cd` command. For example:
+The `.roomodes` file defines the different modes that can be used with the SPARC methodology in your project. These modes help structure the development process according to the SPARC phases (Specification, Pseudocode, Architecture, Refinement, Completion).
+
+These files are essential for using the SPARC methodology in your project and provide the foundation for structured, efficient development.
+
+## Implementation Instructions
+
+### Installation & Activation
+
+1. **Initialize SPARC in your project**: Run `npx create-sparc init` in your project directory to set up the necessary SPARC files.
+2. **Activate SPARC Orchestrator**: In Roo Code, select the "SPARC Orchestrator" as your primary mode to begin the development process.
+
+### Task Delegation
+
+1. **Use Boomerang Tasks**: Delegate tasks to specialized modes (Specification & Pseudocode, Architect, Code, TDD, etc.) using the Boomerang task concept with clear instructions.
+2. **Context Isolation**: Each subtask runs in its own isolated context and returns a concise summary upon completion.
+3. **Iterative Refinement**: Modes like TDD, Debug, and Security Reviewer iterate until all tests pass, files remain modular (<500 lines), and no environment variables are hard-coded.
+
+### Final Integration & Monitoring
+
+1. **Integration**: The Integrator mode consolidates outputs from all specialized modes into a final, cohesive deliverable.
+2. **Documentation & Monitoring**: The Documentation Writer mode produces detailed guides, while the Post-Deployment Monitor tracks live performance and flags issues.
+3. **Continuous Optimization**: The Optimizer mode ensures ongoing improvements and adherence to best practices.
+
+### Customization Options
+
+1. **Tool Access Restrictions**: Adjust the access permissions for each mode to control which tools they can use.
+2. **Role Definitions**: Edit the role definitions to match your organization's language and standards.
+3. **Project-Specific Overrides**: The `.roomodes` file in your project root can override global settings for your specific project needs.
+
+## Quick Start Example
+
+Here's a quick example of how to use SPARC methodology with Roo Code for a new project:
+
+1. **Initialize a new SPARC project**:
+   ```bash
+   mkdir my-sparc-project
+   cd my-sparc-project
+   npx create-sparc init
    ```
-   cd /path/to/ruv_setup.py
-   ```
 
-3. Make sure you have Python installed on your system. You can check the Python version by running:
-   ```
-   python --version
-   ```
+2. **Open the project in VS Code with Roo Code extension installed**
 
-4. Run the `ruv_setup.py` script with the desired options or without any options to enter interactive mode. Here are some examples:
+3. **Start with the SPARC Orchestrator mode**:
+   - Select the "⚡️ SPARC Orchestrator" mode in Roo Code
+   - Describe your project goal: "I want to create a REST API for a todo list application"
 
-   - To show the help menu:
-     ```
-     python ruv_setup.py -h
-     ```
+4. **Follow the guided workflow**:
+   - The Orchestrator will break down your project into phases
+   - Each phase will be handled by a specialized mode
+   - You'll receive clear instructions at each step
 
-   - To install the required packages:
-     ```
-     python ruv_setup.py -i
-     ```
+5. **Review and integrate the results**:
+   - The final code will be modular, secure, and well-tested
+   - Documentation will be comprehensive and up-to-date
+   - The architecture will follow best practices
 
-   - To configure the environment variables and settings:
-     ```
-     python ruv_setup.py -c
-     ```
-
-   - To perform the initial setup with guided steps:
-     ```
-     python ruv_setup.py -s
-     ```
-
-   - To configure liteLLM:
-     ```
-     python ruv_setup.py --llm
-     ```
-
-   - To configure Open Interpreter:
-     ```
-     python ruv_setup.py --oi
-     ```
-
-   - To configure Jupyter:
-     ```
-     python ruv_setup.py --jupyter
-     ```
-
-   - To launch Super Coder for automated code generation:
-     ```
-     python ruv_setup.py --super-coder
-     ```
-
-   - To enter interactive mode and choose options from a menu:
-     ```
-     python ruv_setup.py
-     ```
-
-5. Follow the prompts and instructions provided by the script based on the selected options.
-
-   - If you choose to configure the environment (`-c` or `--configure`), you will be prompted to enter your OpenAI API key and Anthropic API key. If you don't have the keys, you can press Enter to skip.
-
-   - If you choose to perform the initial setup (`-s` or `--setup`), the script will clone the rUv-dev repository and perform the necessary configurations.
-
-   - In interactive mode, you can select options from the menu by entering the corresponding number or option name.
-
-6. Once the script finishes executing, it will display success messages and any additional instructions if necessary.
-
-7. If the script mentions sourcing `~/.bashrc` or restarting your terminal, make sure to do so for the changes to take effect globally.
-
-Note: Make sure you have the necessary permissions to run the script and install packages. If you encounter any permission-related issues, you may need to run the script with administrative privileges using `sudo` or as a user with appropriate permissions.
-
-## Using Dotfiles
-
-rUv-dev comes with a curated set of dotfiles that provide a preconfigured and optimized development environment. The dotfiles include configurations for popular tools like Bash, Zsh, Vim, Tmux, and Git.
-
-To use the dotfiles:
-
-1. Clone the rUv-dev repository to your local machine.
-2. Run the provided setup script to automatically symlink the dotfiles to your home directory.
-3. Customize the dotfiles to suit your preferences by modifying the files in the `dotfiles` directory.
-4. Commit and push your changes to your forked repository to keep your dotfiles in sync across machines.
-
-## Customization
-
-rUv-dev is highly customizable and can be tailored to your specific needs. You can:
-
-- ⚙️ Modify the dotfiles to include your preferred configurations and settings.
-- 🔧 Customize Open Interpreter's behavior by adjusting its configuration file.
-- 🌐 Integrate additional AI models and libraries to expand the capabilities of Open Interpreter.
-- 🎨 Create custom Jupyter Notebook templates and styles to match your workflow.
-
-## Advanced Features
-
-rUv-dev offers several advanced features to further enhance your development experience:
-
-- 🔐 Secure storage of sensitive information using encrypted secrets management.
-- 🔄 Seamless integration with version control systems like Git for easy collaboration and tracking.
-- 🚀 Automated setup and provisioning of development environments using setup scripts.
-- 📊 Integration with popular data science and machine learning libraries for advanced analytics and modeling.
-- 🧩 SPARC methodology implementation for structured, modular software development.
-- 🤖 Specialized AI modes for different aspects of the development lifecycle.
-
-## Getting Started
-
-To get started with rUv-dev, follow these steps:
-
-1. Fork the rUv-dev repository to your GitHub account.
-2. Press the "," (comma) key while viewing the repository on GitHub to create a new codespace.
-3. Customize the dotfiles and configurations to suit your preferences.
-4. Start using Open Interpreter and Jupyter Notebook to supercharge your development workflow!
-
-
-## How The script works.
-1. Environment Variables:
-   - The script appends the selected configuration options as environment variables to the `~/.bashrc` file.
-   - For example, when setting the OpenAI API key, the script appends `export OPENAI_API_KEY=<user_input>` to `~/.bashrc`.
-   - Similarly, other configuration options like LLM provider, API keys, optimization settings, and advanced settings are saved as environment variables in `~/.bashrc`.
-   - By appending these variables to `~/.bashrc`, they will be available in future shell sessions when the file is sourced.
-
-2. Configuration Files:
-   - The script creates configuration files in specific directories to store the selected settings.
-   - For Open Interpreter, the script creates a configuration file at `~/.config/open-interpreter/config.yaml` with the selected API keys and model settings.
-   - The script also creates a `.env` file in the user's home directory (`~/.env`) to store additional secrets. The contents of this file are then exported as environment variables by appending `export $(grep -v "^#" ~/.env)` to `~/.bashrc`.
-
-3. Jupyter Notebook Configuration:
-   - The script generates a Jupyter Notebook configuration file using the command `jupyter notebook --generate-config`.
-   - It then appends specific configuration options like `c.NotebookApp.open_browser = False`, `c.NotebookApp.ip = '0.0.0.0'`, and `c.NotebookApp.port = 8888` to the `~/.jupyter/jupyter_notebook_config.py` file.
-
-4. Aliases and Functions:
-   - The script defines aliases and functions related to Open Interpreter and Jupyter Notebook.
-   - These aliases and functions are appended to the `~/.bashrc` file using the `>>` redirection operator.
-   - By sourcing `~/.bashrc` after appending the aliases and functions, they become available in the current shell session.
-
-5. Local Knowledge Base:
-   - The script creates a directory `~/kb` to serve as a local knowledge base.
-   - It also creates a `README.md` file inside the `~/kb` directory with instructions on how to use the local knowledge base.
-
-6. Tmux Configuration:
-   - The script appends an alias `dev` for creating a tmux development session to the `~/.bashrc` file.
-   - By sourcing `~/.bashrc` after appending the alias, it becomes available in the current shell session.
-
-7. Local CI/CD Pipeline:
-   - The script creates a directory `~/ci-cd` for the local CI/CD pipeline.
-   - It creates a `README.md` file inside the `~/ci-cd` directory with instructions on how to use the local CI/CD pipeline.
-   - It also creates a `run-tests.sh` script inside the `~/ci-cd` directory with a command to execute the pipeline.
-
-To ensure that the changes take effect, the script sources the `~/.bashrc` file after appending the aliases and functions. However, for the environment variables and other configurations to be available in future shell sessions, the user needs to source `~/.bashrc` or start a new shell session after running the setup script.
-
+This workflow dramatically reduces development time while ensuring high-quality, maintainable code.
 
 ## Contributing
 
-We welcome contributions from the community to make rUv-dev even better! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request on the GitHub repository.
+Contributions to `create-sparc` are welcome! Whether you're fixing bugs, improving documentation, or proposing new features, your help is appreciated.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-rUv-dev is open-source and released under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute the code as per the terms of the license.
-
-## Acknowledgements
-
-We would like to thank the open-source community for their valuable contributions and the AI research community for their groundbreaking work that powers rUv-dev.
+MIT
 
 ---
 
-🤖 Happy coding with rUv-dev! Let's revolutionize development together! 🚀
+Created by [Reuven Cohen](https://github.com/ruvnet) - Agentic Engineer / aiCTO / Vibe Coach
+
+For questions or support, please open an issue on the [GitHub repository](https://github.com/ruvnet/rUv-dev).
