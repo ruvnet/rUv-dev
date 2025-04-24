@@ -1,9 +1,8 @@
-```             
- _ __ _   ___   __  
+_ __ _   ___   __  
 | '__| | | \ \ / /  
 | |  | |_| |\ V /   
 |_|   \__,_| \_/
-          
+           
  Ai | God Mode
  AI-Powered Coding Environment
 
@@ -26,7 +25,58 @@ To quickly start a new codespace with rUv-dev, simply press the "," (comma) key 
 
 ## Introduction
 
-rUv-dev is a cutting-edge Ai development setup for Codespace and VScode that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, liteLLM, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
+rUv-dev is a cutting-edge AI development setup for Codespace and VScode that integrates AI-powered tools and utilities to enhance your productivity and creativity. By combining the power of Open Interpreter, Jupyter Notebook, liteLLM, and a curated set of dotfiles, rUv-dev provides a seamless and intelligent development workflow.
+
+## The SPARC Methodology 🌟
+
+rUv-dev now implements the powerful SPARC methodology for structured, modular software development:
+
+### S - Specification
+- Clarify objectives and scope
+- Define functional requirements and edge cases
+- Establish constraints and acceptance criteria
+- Never allow hard-coded environment variables
+
+### P - Pseudocode
+- Develop high-level logic with TDD anchors
+- Create modular flow diagrams
+- Identify core functions and data structures
+- Establish clear interfaces between components
+
+### A - Architecture
+- Design extensible system diagrams
+- Define clear service boundaries
+- Establish API contracts and data flows
+- Create modular, maintainable component structures
+
+### R - Refinement
+- Implement with Test-Driven Development
+- Debug and optimize code
+- Perform security reviews
+- Refactor for maintainability and performance
+
+### C - Completion
+- Integrate components into a cohesive system
+- Document code, APIs, and usage
+- Monitor system performance
+- Continuously improve and maintain
+
+## Specialized Modes
+
+rUv-dev features specialized AI modes for different aspects of the development lifecycle:
+
+- **⚡️ SPARC Orchestrator** - Coordinates complex workflows and delegates subtasks
+- **🏗️ Architect** - Designs scalable, secure system architectures
+- **🧠 Auto-Coder** - Writes clean, efficient, modular code
+- **🧪 Tester (TDD)** - Implements Test-Driven Development
+- **🪲 Debugger** - Troubleshoots runtime bugs and logic errors
+- **🛡️ Security Reviewer** - Performs security audits and vulnerability assessments
+- **📚 Documentation Writer** - Creates clear, concise documentation
+- **🔗 System Integrator** - Merges components into a cohesive system
+- **📈 Deployment Monitor** - Observes system performance post-launch
+- **🧹 Optimizer** - Refactors and improves system performance
+- **🔐 Supabase Admin** - Manages database, authentication, and storage
+- **♾️ MCP Integration** - Connects to external services through MCP interfaces
 
 ## Benefits
 
@@ -36,6 +86,8 @@ rUv-dev is a cutting-edge Ai development setup for Codespace and VScode that int
 - 🔧 Seamlessly integrate AI-powered tools into your existing workflow.
 - 🎨 Unleash your creativity by leveraging AI to generate code snippets, solutions, and ideas.
 - 🔄 Continuously improve your development process with AI-driven insights and recommendations.
+- 🧩 Build modular, maintainable software with the SPARC methodology.
+- 🔒 Ensure secure, well-tested code with specialized AI modes.
 
 ## Improvement to Traditional Development
 
@@ -47,6 +99,7 @@ With rUv-dev, you can:
 - 🔍 Quickly find solutions to coding challenges with AI-powered code search and recommendations.
 - 🚀 Set up your development environment effortlessly with preconfigured dotfiles and automated setup scripts.
 - 🤝 Collaborate with AI assistants to brainstorm ideas, debug code, and optimize your workflows.
+- 📋 Follow the SPARC methodology for structured, maintainable software development.
 
 ## AI-Based Development with Open Interpreter and Jupyter
 
@@ -193,6 +246,8 @@ rUv-dev offers several advanced features to further enhance your development exp
 - 🔄 Seamless integration with version control systems like Git for easy collaboration and tracking.
 - 🚀 Automated setup and provisioning of development environments using setup scripts.
 - 📊 Integration with popular data science and machine learning libraries for advanced analytics and modeling.
+- 🧩 SPARC methodology implementation for structured, modular software development.
+- 🤖 Specialized AI modes for different aspects of the development lifecycle.
 
 ## Getting Started
 
