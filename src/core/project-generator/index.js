@@ -129,11 +129,11 @@ const projectGenerator = {
         const files = await fs.readdir(projectPath);
         const nonHiddenFiles = files.filter(file => !file.startsWith('.') && file !== 'node_modules');
         
-        if (nonHiddenFiles.length > 0) {
-          throw new Error('Current directory is not empty. Use a new directory or empty the current one.');
+        if (nonHiddenFiles.length > 0 && !config.force) {
+          throw new Error('Current directory is not empty. Use a new directory, empty the current one, or use --force option.');
         }
-      } else {
-        throw new Error(`Directory ${config.projectPath} already exists and is not empty.`);
+      } else if (!config.force) {
+        throw new Error(`Directory ${config.projectPath} already exists. Use --force option to initialize anyway.`);
       }
     } else {
       // Create the directory

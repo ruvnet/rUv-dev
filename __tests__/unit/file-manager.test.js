@@ -4,8 +4,17 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const os = require('os');
+const crypto = require('crypto');
 const { fileManager } = require('../../src/core/file-manager');
 const { mockFileSystem } = require('../utils/test-utils');
+
+// Helper function to create a test directory
+async function createTestDir(name) {
+  const testDir = path.join(os.tmpdir(), `${name}-${Date.now()}`);
+  await fs.ensureDir(testDir);
+  return testDir;
+}
 
 describe('File Manager', () => {
   let mockFs;
@@ -156,6 +165,7 @@ describe('File Manager', () => {
       fs.access.mockImplementation((path) => {
         return Promise.resolve();
       });
+    });
       
       // Mock fs.copy to throw an error when overwrite is false
       fs.copy.mockRejectedValueOnce(new Error('EEXIST: file already exists'));
@@ -323,4 +333,3 @@ describe('File Manager', () => {
       await fileManager.delete(filePath, { force: true });
     });
   });
-});

@@ -147,6 +147,151 @@ Each mode operates within its own isolated context, ensuring focused and efficie
 - Configurable templates
 - Symlink support for efficient file management
 
+## MCP Wizard
+
+The MCP (Multi-Cloud Protocol) Wizard is a powerful feature that simplifies the configuration and management of external service integrations in your SPARC projects.
+
+### What is the MCP Wizard?
+
+The MCP Wizard is a configuration system that enables seamless integration between your SPARC projects and external services like databases, AI models, cloud providers, and more. It provides:
+
+- **Simplified Service Configuration**: Easily connect to external services with guided setup
+- **Secure Credential Management**: Store API keys and tokens as environment variable references
+- **Permission Scoping**: Configure appropriate access levels for each service
+- **AI Assistant Integration**: Enable Roo Code to interact with external services
+
+### MCP Configuration Files
+
+The MCP Wizard manages two main configuration files:
+
+1. **MCP Configuration File** (`.roo/mcp.json`): Contains server configurations, including command, arguments, and permission scopes.
+
+2. **Roomodes File** (`.roomodes`): Contains roomode definitions for MCP servers, enabling AI assistants to interact with the servers.
+
+Example MCP configuration:
+```json
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "${env:SUPABASE_ACCESS_TOKEN}"
+      ],
+      "alwaysAllow": [
+        "list_tables",
+        "execute_sql"
+      ]
+    }
+  }
+}
+```
+
+### Using the MCP Wizard
+
+You can configure MCP servers using the interactive wizard:
+
+```bash
+npx create-sparc configure-mcp
+```
+
+This will guide you through the process of:
+1. Discovering available MCP servers
+2. Configuring server parameters and credentials
+3. Setting appropriate permission scopes
+4. Generating and updating configuration files
+
+### MCP Wizard CLI Commands
+
+The MCP Wizard provides several command-line options:
+
+```bash
+# Start the interactive wizard
+npx create-sparc configure-mcp
+
+# List configured MCP servers
+npx create-sparc configure-mcp --list
+
+# Discover available MCP servers
+npx create-sparc configure-mcp --discover
+
+# Add a specific MCP server
+npx create-sparc configure-mcp --add <server-id>
+
+# Update a configured MCP server
+npx create-sparc configure-mcp --update <server-id>
+
+# Remove a configured MCP server
+npx create-sparc configure-mcp --remove <server-id>
+
+# Validate current MCP configuration
+npx create-sparc configure-mcp --validate
+
+# Create a backup of current configuration
+npx create-sparc configure-mcp --backup
+
+# Perform security audit on MCP configuration
+npx create-sparc configure-mcp --security-audit
+
+# Automatically fix security issues
+npx create-sparc configure-mcp --security-audit --auto-fix
+
+# Validate environment variable references
+npx create-sparc configure-mcp --validate-env
+```
+
+### Advanced MCP Configuration Options
+
+For more advanced use cases, you can customize the MCP configuration:
+
+```bash
+# Use a custom registry URL
+npx create-sparc configure-mcp --registry https://your-custom-registry.com/api
+
+# Specify custom paths for configuration files
+npx create-sparc configure-mcp --config-path custom/path/mcp.json --roomodes-path custom/path/roomodes
+
+# Run in non-interactive mode (for CI/CD pipelines)
+npx create-sparc configure-mcp --add supabase --no-interactive
+```
+
+### MCP Security Features
+
+The MCP Wizard includes comprehensive security features:
+
+1. **Secure Credential Management**
+   - Automatically detects sensitive parameters (API keys, tokens, passwords)
+   - Converts hardcoded values to environment variable references
+   - Provides clear instructions for setting up environment variables
+
+2. **Permission Scoping**
+   - Default permissions are set to the minimum required
+   - Clear warnings are provided when expanding beyond recommended permissions
+   - Detailed explanations of each permission's implications
+
+3. **Security Auditing**
+   - Scans configurations for security issues
+   - Categorizes issues by severity (critical, warning, info)
+   - Provides specific recommendations for each issue
+
+4. **Configuration Protection**
+   - Existing configurations are backed up before modification
+   - All configurations are validated before saving
+
+### MCP Integration Best Practices
+
+1. **Version Control**: Add `.roo/mcp.json` to version control but exclude any files containing actual secrets.
+
+2. **Environment Variables**: Use a `.env` file for local development (added to `.gitignore`) and proper environment variable management for production.
+
+3. **Regular Updates**: Periodically check for updates to MCP servers and update your configurations.
+
+4. **Permission Auditing**: Regularly review the permissions granted to each server and remove any that are no longer needed.
+
+5. **Documentation**: Document the MCP servers used in your project and their configuration requirements for team members.
+
 ## Benefits of SPARC with Roo Code
 
 ### Enhanced Development Workflow

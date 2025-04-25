@@ -15,6 +15,7 @@ function initCommand(program) {
     .command('init [name]')
     .description('Create a new SPARC project')
     .option('-t, --template <name>', 'Template to use', 'default')
+    .option('-f, --force', 'Allow initialization in non-empty directories')
     .option('--skip-install', 'Skip dependency installation')
     .option('--use-npm', 'Use npm as package manager')
     .option('--use-yarn', 'Use yarn as package manager')
@@ -31,6 +32,7 @@ function initCommand(program) {
           projectName: name || 'sparc-project', // Provide a default name if none is given
           projectPath: name || '.',
           template: options.template,
+          force: options.force || false, // Add force option
           installDependencies: !options.skipInstall,
           symlink: {
             enabled: options.symlink !== false,
