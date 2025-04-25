@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "openai": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openai/mcp-server@latest",
+        "--api-key",
+        "${env:OPENAI_API_KEY}",
+        "--model",
+        "gpt-4"
+      ],
+      "alwaysAllow": [
+        "create_completion",
+        "list_models",
+        "create_embedding"
+      ]
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "${env:SUPABASE_ACCESS_TOKEN}",
+        "--project-id",
+        "abcdef123456",
+        "--region",
+        "us-east-1"
+      ],
+      "alwaysAllow": [
+        "list_tables",
+        "execute_sql",
+        "list_projects"
+      ]
+    }
+  }
+}

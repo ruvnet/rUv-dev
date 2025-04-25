@@ -8,6 +8,8 @@ const pkg = require('../../package.json');
 const { initCommand } = require('./commands/init');
 const { addCommand } = require('./commands/add');
 const { helpCommand } = require('./commands/help');
+const { wizardCommand } = require('./commands/wizard');
+const { configureMcpCommand } = require('./commands/configure-mcp');
 const { logger } = require('../utils');
 
 /**
@@ -29,6 +31,8 @@ async function run(args) {
     initCommand(program);
     addCommand(program);
     helpCommand(program);
+    wizardCommand(program);
+    configureMcpCommand(program);
 
     // Handle unknown commands
     program.on('command:*', () => {
