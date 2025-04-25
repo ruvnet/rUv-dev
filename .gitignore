@@ -145,3 +145,5 @@ Thumbs.db
 run-test/
 .devcontainer/
 test-project
+mcp-docs
+mcp-test

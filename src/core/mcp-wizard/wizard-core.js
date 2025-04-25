@@ -395,7 +395,7 @@ const wizardCore = {
         const securityResult = mcpSecurity.secureConfiguration(mcpConfig);
         
         // Write the secured configuration
-        await fileManager.writeConfig(mcpConfigPath, securityResult.securedConfig);
+        await configGenerator.writeMcpConfig(securityResult.securedConfig, mcpConfigPath);
         
         fixResults = {
           appliedFixes: securityResult.appliedFixes,
