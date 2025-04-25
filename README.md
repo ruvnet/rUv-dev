@@ -2,8 +2,8 @@
 
 > **Transform your development workflow with SPARC methodology and AI-powered assistance**
 
-`create-sparc` is a powerful Node.js toolkit that revolutionizes how you build software by integrating the structured SPARC methodology with advanced AI assistance through Roo Code. This combination enables developers to create modular, secure, and maintainable applications with unprecedented efficiency.
-
+`create-sparc` is a powerful agentic toolkit that changes how you build software by integrating the structured SPARC methodology with advanced AI assistance through Roo Code and Model Context Protocol (MCP) capabilities. This comprehensive platform enables AI agents to securely connect with external services like databases, APIs, and cloud resources, allowing developers to create modular, secure, and maintainable applications with unprecedented efficiency while seamlessly bridging the gap between AI and real-world systems.
+ 
 ## Installation
 
 You don't need to install this package directly. Use npx to run it:
@@ -35,7 +35,50 @@ To fully leverage the SPARC methodology, you'll need the Roo Code extension for 
 
 You can install the Roo Code extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline).
 
+## Core Features
 
+- Scaffolds new projects with SPARC methodology structure
+- Sets up .roo directory and .roomodes file for SPARC modes
+- Supports TypeScript projects
+- Configurable templates
+- Symlink support for efficient file management
+- MCP (Model Context Protocol) integration for external services
+- Secure credential management
+- Comprehensive documentation generation
+
+## What is MCP?
+
+MCP (Model-Context Protocol) is a powerful bridge between your applications and external services that enables AI-assisted interactions with databases, APIs, and cloud resources. With MCP integration in create-sparc, you can:
+
+### Seamless Service Integration
+
+MCP allows your AI assistants to directly interact with external services like Supabase, OpenAI, GitHub, AWS, and Firebase through a standardized protocol. This means your Roo Code assistant can:
+
+- **Query databases** without you writing SQL
+- **Deploy applications** to cloud providers
+- **Manage infrastructure** across multiple platforms
+- **Interact with APIs** using natural language requests
+- **Generate and analyze data** from various sources
+
+### Secure by Design
+
+MCP prioritizes security through:
+
+- **Environment variable references** for all sensitive credentials
+- **Permission scoping** that follows the principle of least privilege
+- **No hardcoded secrets** in any configuration files
+- **Automatic security auditing** to detect potential vulnerabilities
+- **Secure credential management** with clear separation from code
+
+### Easy Configuration
+
+The MCP Wizard makes setup simple:
+
+- **Interactive configuration** guides you through connecting services
+- **Automatic discovery** of available MCP servers
+- **Validation and verification** of all configurations
+- **Clear documentation** for each integration step
+- **Seamless updates** when service requirements change
 
 ## Usage
 
@@ -139,17 +182,9 @@ When you initialize a project with `npx create-sparc init`, the following specia
 
 Each mode operates within its own isolated context, ensuring focused and efficient task management while adhering to best practices—avoiding hard-coded environment variables, maintaining files under 500 lines, and ensuring a modular, extensible design.
 
-## Features
-
-- Scaffolds new projects with SPARC methodology structure
-- Sets up .roo directory and .roomodes file for SPARC modes
-- Supports TypeScript projects
-- Configurable templates
-- Symlink support for efficient file management
-
 ## MCP Wizard
 
-The MCP (Multi-Cloud Protocol) Wizard is a powerful feature that simplifies the configuration and management of external service integrations in your SPARC projects.
+The MCP (Model Context Protocol) Wizard is a powerful feature that simplifies the configuration and management of external service integrations in your SPARC projects.
 
 ### What is the MCP Wizard?
 
@@ -159,6 +194,14 @@ The MCP Wizard is a configuration system that enables seamless integration betwe
 - **Secure Credential Management**: Store API keys and tokens as environment variable references
 - **Permission Scoping**: Configure appropriate access levels for each service
 - **AI Assistant Integration**: Enable Roo Code to interact with external services
+
+The MCP Configuration Wizard consists of the following components:
+
+1. **MCP Wizard** - Main entry point that orchestrates the configuration process
+2. **Configuration Generator** - Creates MCP.json configurations and roomode definitions
+3. **Registry Client** - Interacts with the MCP Registry API to discover available servers
+4. **Security Module** - Ensures proper handling of sensitive information
+5. **File Manager** - Provides safe and reliable file system operations for configurations
 
 ### MCP Configuration Files
 
@@ -189,6 +232,37 @@ Example MCP configuration:
 }
 ```
 
+The MCP.json file follows this schema:
+
+```json
+{
+  "mcpServers": {
+    "[server-id]": {
+      "command": "string",
+      "args": ["string"],
+      "alwaysAllow": ["string"],
+      "env": {
+        "ENV_VAR": "value"
+      }
+    }
+  }
+}
+```
+
+MCP integration roomodes follow this structure:
+
+```json
+{
+  "slug": "mcp-[server-id]",
+  "name": "Server Name Integration",
+  "model": "claude-3-7-sonnet-20250219",
+  "roleDefinition": "You are a specialized assistant...",
+  "customInstructions": "Server-specific instructions...",
+  "groups": ["read", "edit", "mcp"],
+  "source": "project"
+}
+```
+
 ### Using the MCP Wizard
 
 You can configure MCP servers using the interactive wizard:
@@ -202,6 +276,30 @@ This will guide you through the process of:
 2. Configuring server parameters and credentials
 3. Setting appropriate permission scopes
 4. Generating and updating configuration files
+
+#### Interactive Mode Workflow
+
+1. Run `npx create-sparc configure-mcp`
+2. Select "Add a new MCP server"
+3. Choose the server from the list or enter a server ID
+4. Provide the required parameters (API keys, project IDs, etc.)
+5. Review and confirm the configuration
+6. Set up the necessary environment variables
+
+#### Updating an Existing Server
+
+1. Run `npx create-sparc configure-mcp`
+2. Select "Update an existing MCP server"
+3. Choose the server to update
+4. Modify the parameters as needed
+5. Review and confirm the changes
+
+#### Removing a Server
+
+1. Run `npx create-sparc configure-mcp`
+2. Select "Remove an MCP server"
+3. Choose the server to remove
+4. Confirm the removal
 
 ### MCP Wizard CLI Commands
 
@@ -265,20 +363,57 @@ The MCP Wizard includes comprehensive security features:
    - Automatically detects sensitive parameters (API keys, tokens, passwords)
    - Converts hardcoded values to environment variable references
    - Provides clear instructions for setting up environment variables
+   - Warning when sensitive information is detected in configuration files
 
 2. **Permission Scoping**
    - Default permissions are set to the minimum required
    - Clear warnings are provided when expanding beyond recommended permissions
    - Detailed explanations of each permission's implications
+   - Validation against recommended permission sets
 
 3. **Security Auditing**
    - Scans configurations for security issues
    - Categorizes issues by severity (critical, warning, info)
    - Provides specific recommendations for each issue
+   - Generates an overall security report
 
 4. **Configuration Protection**
    - Existing configurations are backed up before modification
    - All configurations are validated before saving
+   - Hash-based file integrity verification
+   - Automatic recovery from failed operations
+
+5. **Warning System**
+   - Alerts about potentially insecure configurations
+   - Provides clear explanations of security risks
+   - Offers actionable recommendations
+   - Can automatically fix common security issues
+
+### MCP Registry Integration
+
+The MCP Wizard integrates with the MCP Registry API to discover and retrieve information about available MCP servers. The Registry Client provides:
+
+- **Server Discovery**: Find available MCP servers from the registry
+- **Detailed Information**: Get comprehensive details about each server
+- **Search Capabilities**: Find servers by name, tags, or other criteria
+- **Caching**: Automatic caching for improved performance
+- **Error Handling**: Robust error handling with retry mechanisms
+
+Available MCP servers include:
+- `supabase` - Supabase database server
+- `openai` - OpenAI AI operations server
+- `github` - GitHub repository operations server
+- `aws` - AWS cloud operations server
+- `firebase` - Firebase app development server
+
+Each server includes:
+- Basic metadata (name, description, version, etc.)
+- Required and optional arguments
+- Recommended permissions
+- Example configurations
+- Roomode templates
+
+For testing purposes, a mock implementation of the Registry Client is available, which simulates all Registry API endpoints without requiring an actual registry server.
 
 ### MCP Integration Best Practices
 
@@ -291,6 +426,14 @@ The MCP Wizard includes comprehensive security features:
 4. **Permission Auditing**: Regularly review the permissions granted to each server and remove any that are no longer needed.
 
 5. **Documentation**: Document the MCP servers used in your project and their configuration requirements for team members.
+
+6. **Secure Storage of Environment Variables**:
+   - For development: Use `.env` files (but don't commit them to version control)
+   - For production: Use a secrets management solution (AWS Secrets Manager, HashiCorp Vault, etc.)
+
+7. **Follow the principle of least privilege**: Grant only the permissions that are necessary
+
+8. **Use specific package versions**: Avoid using "latest" to prevent supply chain attacks
 
 ## Benefits of SPARC with Roo Code
 
@@ -327,6 +470,7 @@ The `.roo` directory contains configuration files, rules, and templates that def
 - Templates for components and other project elements
 - Configuration for SPARC modes
 - Guidelines for development practices
+- MCP configuration (mcp.json)
 
 ### .roomodes File
 

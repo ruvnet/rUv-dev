@@ -11,6 +11,7 @@ const { RegistryClient } = require('../registry-client');
 const { configGenerator } = require('./config-generator');
 const { fileManager } = require('../file-manager');
 const { logger } = require('../../utils');
+const { mcpSecurity } = require('./security');
 
 /**
  * MCP Wizard Core
@@ -354,6 +355,111 @@ const wizardCore = {
     } catch (error) {
       logger.error(`Configuration workflow failed: ${error.message}`);
       return { success: false, error: error.message };
+    }
+  },
+  
+  /**
+   * Perform security audit on MCP configuration
+   * @param {Object} options - Configuration options
+   * @returns {Promise<Object>} Audit results
+   */
+  async auditSecurity(options = {}) {
+    logger.debug('Performing security audit on MCP configuration');
+    
+    try {
+      // Set default options
+      const defaultOptions = {
+        projectPath: process.cwd(),
+        mcpConfigPath: '.roo/mcp.json',
+        autoFix: false
+      };
+      
+      const config = { ...defaultOptions, ...options };
+      
+      // Resolve path
+      const mcpConfigPath = path.resolve(this.options?.projectPath || config.projectPath,
+                                        this.options?.mcpConfigPath || config.mcpConfigPath);
+      
+      // Read existing MCP configuration
+      const mcpConfig = await fileManager.safeReadConfig(mcpConfigPath, { parseJson: true });
+      
+      // Perform security audit
+      const auditResults = mcpSecurity.auditConfiguration(mcpConfig);
+      
+      // Auto-fix security issues if enabled
+      let fixResults = null;
+      if (config.autoFix && !auditResults.secure) {
+        logger.info('Auto-fixing security issues');
+        
+        // Secure the configuration
+        const securityResult = mcpSecurity.secureConfiguration(mcpConfig);
+        
+        // Write the secured configuration
+        await fileManager.writeConfig(mcpConfigPath, securityResult.securedConfig);
+        
+        fixResults = {
+          appliedFixes: securityResult.appliedFixes,
+          fixedConfig: securityResult.securedConfig
+        };
+        
+        logger.info(`Applied ${securityResult.appliedFixes.length} security fixes`);
+      }
+      
+      return {
+        success: true,
+        secure: auditResults.secure,
+        issues: auditResults.issues,
+        recommendations: auditResults.recommendations,
+        fixes: fixResults
+      };
+    } catch (error) {
+      logger.error(`Failed to perform security audit: ${error.message}`);
+      return {
+        success: false,
+        error: error.message
+      };
+    }
+  },
+  
+  /**
+   * Validate environment variable references in MCP configuration
+   * @param {Object} options - Configuration options
+   * @returns {Promise<Object>} Validation results
+   */
+  async validateEnvVarReferences(options = {}) {
+    logger.debug('Validating environment variable references in MCP configuration');
+    
+    try {
+      // Set default options
+      const defaultOptions = {
+        projectPath: process.cwd(),
+        mcpConfigPath: '.roo/mcp.json'
+      };
+      
+      const config = { ...defaultOptions, ...options };
+      
+      // Resolve path
+      const mcpConfigPath = path.resolve(this.options?.projectPath || config.projectPath,
+                                        this.options?.mcpConfigPath || config.mcpConfigPath);
+      
+      // Read existing MCP configuration
+      const mcpConfig = await fileManager.safeReadConfig(mcpConfigPath, { parseJson: true });
+      
+      // Validate environment variable references
+      const validationResults = mcpSecurity.validateEnvVarReferences(mcpConfig);
+      
+      return {
+        success: true,
+        valid: validationResults.valid,
+        missingVariables: validationResults.missingVariables,
+        references: validationResults.references
+      };
+    } catch (error) {
+      logger.error(`Failed to validate environment variable references: ${error.message}`);
+      return {
+        success: false,
+        error: error.message
+      };
     }
   }
 };
