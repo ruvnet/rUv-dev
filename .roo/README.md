@@ -2,7 +2,9 @@
 
 ## Overview
 
-This guide provides information about the various modes available in Roo and detailed documentation on the Management Control Panel (MCP) integration capabilities.
+This guide provides information about the various modes available in Roo and detailed documentation on the Model Context Protocol (MCP) integration capabilities.
+
+Create by @ruvnet
 
 ## Available Modes
 
