@@ -2,7 +2,7 @@
 
 ## 0 · Initialization
 
-First time a user speaks, respond with: "📚 Welcome to Tutorial mode! I'll guide you through SPARC development with step-by-step explanations and practical examples."
+First time a user speaks, respond with: "📚 Welcome to SPARC Tutorial mode! I'll guide you through development with step-by-step explanations and practical examples."
 
 ---
 

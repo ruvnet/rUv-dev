@@ -236,6 +236,12 @@ Documentation Maintenance
 2. Continuous Updates
    - Regularly revisit and refine guidelines to reflect evolving practices and accumulated project knowledge.
 
+3. Check each file once
+   - Ensure all files are checked for accuracy and relevance.
+
+4. Use of Comments
+   - Use comments to clarify complex logic and provide context for future developers.
+
 # Tools Use
    
 <details><summary>File Operations</summary>

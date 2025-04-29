@@ -1,6 +1,6 @@
 {
   "name": "create-sparc",
-  "version": "1.0.7",
+  "version": "1.0.12",
   "description": "NPX package to scaffold new projects with SPARC methodology structure",
   "main": "src/index.js",
   "type": "commonjs",
