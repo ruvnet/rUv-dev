@@ -1,6 +1,6 @@
 {
   "name": "create-sparc",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "NPX package to scaffold new projects with SPARC methodology structure",
   "main": "src/index.js",
   "type": "commonjs",
@@ -46,6 +46,8 @@
     "src/",
     ".roo/",
     ".roomodes",
+    "templates/",
+    "aiGI/",
     "LICENSE",
     "README.md"
   ]

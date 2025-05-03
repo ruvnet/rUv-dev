@@ -11,6 +11,7 @@ const { helpCommand } = require('./commands/help');
 const { wizardCommand } = require('./commands/wizard');
 const { configureMcpCommand } = require('./commands/configure-mcp');
 const { aigiCommand } = require('./commands/aigi');
+const { minimalCommand } = require('./commands/minimal');
 const { logger } = require('../utils');
 
 /**
@@ -31,10 +32,12 @@ async function run(args) {
   Usage Examples:
     $ npx create-sparc init [project-name]     Create a new SPARC project
     $ npx create-sparc aigi init [project-name] Create a new AIGI project
+    $ npx create-sparc minimal init [project-name] Create a new minimal Roo mode framework
     
     When running directly with Node:
     $ node bin/index.js init [project-name]     Create a new SPARC project
     $ node bin/index.js aigi init [project-name] Create a new AIGI project
+    $ node bin/index.js minimal init [project-name] Create a new minimal Roo mode framework
     
     Note: Do not use 'create-sparc' as a command when running with Node directly.
     Incorrect: node bin/index.js create-sparc init
@@ -48,6 +51,7 @@ async function run(args) {
     wizardCommand(program);
     configureMcpCommand(program);
     aigiCommand(program);
+    minimalCommand(program);
 
     // Handle unknown commands
     program.on('command:*', () => {
