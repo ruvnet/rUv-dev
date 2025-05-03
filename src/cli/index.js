@@ -10,6 +10,7 @@ const { addCommand } = require('./commands/add');
 const { helpCommand } = require('./commands/help');
 const { wizardCommand } = require('./commands/wizard');
 const { configureMcpCommand } = require('./commands/configure-mcp');
+const { aigiCommand } = require('./commands/aigi');
 const { logger } = require('../utils');
 
 /**
@@ -25,7 +26,20 @@ async function run(args) {
       .description('Scaffold new projects with SPARC methodology structure')
       .version(pkg.version, '-v, --version', 'Display version number')
       .option('-d, --debug', 'Enable debug mode')
-      .option('--verbose', 'Enable verbose output');
+      .option('--verbose', 'Enable verbose output')
+      .addHelpText('beforeAll', `
+  Usage Examples:
+    $ npx create-sparc init [project-name]     Create a new SPARC project
+    $ npx create-sparc aigi init [project-name] Create a new AIGI project
+    
+    When running directly with Node:
+    $ node bin/index.js init [project-name]     Create a new SPARC project
+    $ node bin/index.js aigi init [project-name] Create a new AIGI project
+    
+    Note: Do not use 'create-sparc' as a command when running with Node directly.
+    Incorrect: node bin/index.js create-sparc init
+    Correct:   node bin/index.js init
+`);
 
     // Register commands
     initCommand(program);
@@ -33,18 +47,31 @@ async function run(args) {
     helpCommand(program);
     wizardCommand(program);
     configureMcpCommand(program);
+    aigiCommand(program);
 
     // Handle unknown commands
     program.on('command:*', () => {
-      const errorMessage = chalk.red(`\nError: Invalid command: ${program.args.join(' ')}`);
+      const invalidCommand = program.args.join(' ');
+      let errorMessage = chalk.red(`\nError: Invalid command: ${invalidCommand}`);
+      
+      // Provide specific guidance for common mistakes
+      if (invalidCommand.includes('create-sparc')) {
+        errorMessage += chalk.yellow(`\n\nIt looks like you're trying to use 'create-sparc' as part of the command.
+When running with Node directly, you should use:
+  ${chalk.green('node bin/index.js init [name]')} or ${chalk.green('node bin/index.js aigi init [name]')}
+
+When using npx, use:
+  ${chalk.green('npx create-sparc init [name]')} or ${chalk.green('npx create-sparc aigi init [name]')}`);
+      }
+      
       console.error(errorMessage);
-      console.log(`See ${chalk.cyan('--help')} for a list of available commands.\n`);
+      console.log(`\nSee ${chalk.cyan('--help')} for a list of available commands and examples.\n`);
       
       // Don't exit the process during tests
       if (process.env.NODE_ENV !== 'test') {
         process.exit(1);
       } else {
-        throw new Error(`Invalid command: ${program.args.join(' ')}`);
+        throw new Error(`Invalid command: ${invalidCommand}`);
       }
     });
 

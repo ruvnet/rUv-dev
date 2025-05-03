@@ -100,6 +100,22 @@ You can also use the shorthand version:
 npx create-sparc my-project
 ```
 
+### Running with Node directly
+
+If you're running the CLI directly with Node (instead of using npx), use the following format:
+
+```bash
+# When running with Node directly
+node bin/index.js init my-project
+node bin/index.js aigi init my-project
+
+# IMPORTANT: Do not include 'create-sparc' in the command when running with Node
+# Incorrect: node bin/index.js create-sparc init
+# Correct:   node bin/index.js init
+```
+
+The `create-sparc` prefix is only used when running through npx, as it's the package name.
+
 Options:
 - `--template <name>` - Template to use (default: "default")
 - `--skip-install` - Skip dependency installation
@@ -120,6 +136,9 @@ cd my-existing-project
 
 # Initialize SPARC files (.roo and .roomodes) without creating project structure
 npx create-sparc init
+
+# Or if running with Node directly
+node path/to/bin/index.js init
 ```
 
 This will only create the necessary SPARC files in your current directory without modifying your existing project structure.

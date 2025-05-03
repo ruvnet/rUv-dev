@@ -183,7 +183,10 @@ const projectGenerator = {
     const projectPath = pathUtils.resolve(config.projectPath);
     
     // Get paths to the actual .roo directory and .roomodes file
-    const rootDir = path.resolve(__dirname, '../../../');
+    // Use custom source directory if provided, otherwise use the root directory
+    const rootDir = config.sourceDir
+      ? path.resolve(__dirname, '../../../', config.sourceDir)
+      : path.resolve(__dirname, '../../../');
     
     for (const filePath of config.symlink.paths) {
       const sourcePath = path.join(rootDir, filePath);
