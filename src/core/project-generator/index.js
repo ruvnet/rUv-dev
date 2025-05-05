@@ -183,14 +183,29 @@ const projectGenerator = {
     const projectPath = pathUtils.resolve(config.projectPath);
     
     // Get paths to the actual .roo directory and .roomodes file
-    const rootDir = path.resolve(__dirname, '../../../');
+    // Use custom source directory if provided, otherwise use the root directory
+    // Find the package root directory (where package.json is located)
+    const packageRoot = path.resolve(__dirname, '../../../');
     
+    // Resolve the source directory as an absolute path
+    const rootDir = config.sourceDir
+      ? path.resolve(packageRoot, config.sourceDir)
+      : packageRoot;
+    
+    console.log('Package root:', packageRoot); // Debug: Log package root
+    console.log('Root directory:', rootDir); // Debug: Log root directory
+    console.log('Project path:', projectPath); // Debug: Log project path
+    
+    // Copy standard SPARC files (.roo and .roomodes)
     for (const filePath of config.symlink.paths) {
       const sourcePath = path.join(rootDir, filePath);
       const targetPath = path.join(projectPath, filePath);
       
+      console.log(`Copying ${filePath} from ${sourcePath} to ${targetPath}`); // Debug: Log copy operation
+      
       // Ensure source exists
       if (!await fsUtils.exists(sourcePath)) {
+        console.error(`Source path not found: ${sourcePath}`); // Debug: Log error
         throw new Error(`Source path not found: ${sourcePath}`);
       }
       
@@ -206,6 +221,40 @@ const projectGenerator = {
       }
       
       logger.debug(`Successfully copied ${filePath} to project`);
+    }
+    
+    // If this is an AIGI project, also copy the aigi.md file
+    if (config.sourceDir === 'aiGI') {
+      const aigiMdSource = path.join(rootDir, 'aigi.md');
+      const aigiMdTarget = path.join(projectPath, 'aigi.md');
+      
+      console.log(`Checking for aigi.md at ${aigiMdSource}`); // Debug: Log aigi.md path
+      
+      // Check if aigi.md exists in the source directory
+      if (await fsUtils.exists(aigiMdSource)) {
+        logger.debug(`Copying aigi.md from ${aigiMdSource} to ${aigiMdTarget}`);
+        await fs.copy(aigiMdSource, aigiMdTarget);
+        logger.debug('Successfully copied aigi.md to project');
+      } else {
+        logger.debug(`aigi.md not found at ${aigiMdSource}`);
+        
+        // Try alternative locations if the file is not found
+        const altLocations = [
+          path.join(packageRoot, 'aiGI', 'aigi.md'),
+          path.join(process.cwd(), 'aiGI', 'aigi.md')
+        ];
+        
+        for (const altPath of altLocations) {
+          console.log(`Trying alternative path: ${altPath}`); // Debug: Log alternative path
+          
+          if (await fsUtils.exists(altPath)) {
+            logger.debug(`Found aigi.md at alternative location: ${altPath}`);
+            await fs.copy(altPath, aigiMdTarget);
+            logger.debug('Successfully copied aigi.md to project from alternative location');
+            break;
+          }
+        }
+      }
     }
   },
   

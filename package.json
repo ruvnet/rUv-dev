@@ -1,6 +1,6 @@
 {
   "name": "create-sparc",
-  "version": "1.0.12",
+  "version": "1.2.2",
   "description": "NPX package to scaffold new projects with SPARC methodology structure",
   "main": "src/index.js",
   "type": "commonjs",
@@ -30,6 +30,8 @@
     "commander": "^9.4.1",
     "fs-extra": "^11.1.1",
     "inquirer": "^8.2.5",
+    "marked": "^4.3.0",
+    "marked-terminal": "^5.2.0",
     "ora": "^5.4.1"
   },
   "devDependencies": {
@@ -44,6 +46,8 @@
     "src/",
     ".roo/",
     ".roomodes",
+    "templates/",
+    "aiGI/",
     "LICENSE",
     "README.md"
   ]

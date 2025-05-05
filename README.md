@@ -1,8 +1,8 @@
 # create-sparc
 
-> **Transform your development workflow with SPARC methodology and AI-powered assistance**
+> **Transform your development workflow with SPARC methodology, AI-driven code generation, and AI-powered assistance**
 
-`create-sparc` is a powerful agentic toolkit that changes how you build software by integrating the structured SPARC methodology with advanced AI assistance through Roo Code and Model Context Protocol (MCP) capabilities. This comprehensive platform enables AI agents to securely connect with external services like databases, APIs, and cloud resources, allowing developers to create modular, secure, and maintainable applications with unprecedented efficiency while seamlessly bridging the gap between AI and real-world systems.
+`create-sparc` is a powerful agentic toolkit that changes how you build software by integrating the structured SPARC methodology, AI-driven code generation (AIGI), and advanced AI assistance through Roo Code and Model Context Protocol (MCP) capabilities. This comprehensive platform enables AI agents to securely connect with external services like databases, APIs, and cloud resources, allowing developers to create modular, secure, and maintainable applications with unprecedented efficiency while seamlessly bridging the gap between AI and real-world systems.
  
 ## Installation
 
@@ -38,6 +38,8 @@ You can install the Roo Code extension from the [VS Code Marketplace](https://ma
 ## Core Features
 
 - Scaffolds new projects with SPARC methodology structure
+- Creates AI-driven code generation (AIGI) projects with specialized components
+- Provides minimal Roo mode framework for custom mode development
 - Sets up .roo directory and .roomodes file for SPARC modes
 - Supports TypeScript projects
 - Configurable templates
@@ -100,8 +102,73 @@ You can also use the shorthand version:
 npx create-sparc my-project
 ```
 
-Options:
+### Create an AI-driven Code Generation (AIGI) project
+
+If you want to create a project focused on AI-driven code generation with specialized components:
+
+```bash
+# Create a new AIGI project with a specific name
+npx create-sparc aigi init my-project
+
+# Initialize AIGI files in the current directory
+npx create-sparc aigi init
+```
+
+The AIGI project provides specialized components for prompt engineering, code quality assessment, and iterative refinement of AI-generated code.
+
+### Create a minimal Roo mode framework
+
+If you want to create a lightweight framework for custom Roo modes without the full SPARC structure:
+
+```bash
+# Create a new minimal Roo mode framework with a specific name
+npx create-sparc minimal init my-project
+
+# Initialize minimal Roo mode files in the current directory
+npx create-sparc minimal init
+```
+
+The minimal Roo mode framework provides just the essential files and structure needed to get started with Roo mode development, making it ideal for developers who want to create their own custom modes.
+
+### Running with Node directly
+
+If you're running the CLI directly with Node (instead of using npx), use the following format:
+
+```bash
+# When running with Node directly
+node bin/index.js init my-project
+node bin/index.js aigi init my-project
+node bin/index.js minimal init my-project
+
+# IMPORTANT: Do not include 'create-sparc' in the command when running with Node
+# Incorrect: node bin/index.js create-sparc init
+# Correct:   node bin/index.js init
+```
+
+The `create-sparc` prefix is only used when running through npx, as it's the package name.
+
+Options for init command:
 - `--template <name>` - Template to use (default: "default")
+- `--skip-install` - Skip dependency installation
+- `--use-npm` - Use npm as package manager
+- `--use-yarn` - Use yarn as package manager
+- `--use-pnpm` - Use pnpm as package manager
+- `--no-git` - Skip git initialization
+- `--typescript` - Use TypeScript
+- `--no-symlink` - Disable symlink creation
+
+Options for aigi command:
+- `-f, --force` - Allow initialization in non-empty directories
+- `--skip-install` - Skip dependency installation
+- `--use-npm` - Use npm as package manager
+- `--use-yarn` - Use yarn as package manager
+- `--use-pnpm` - Use pnpm as package manager
+- `--no-git` - Skip git initialization
+- `--typescript` - Use TypeScript
+- `--no-symlink` - Disable symlink creation
+
+Options for minimal command:
+- `-f, --force` - Allow initialization in non-empty directories
 - `--skip-install` - Skip dependency installation
 - `--use-npm` - Use npm as package manager
 - `--use-yarn` - Use yarn as package manager
@@ -120,6 +187,9 @@ cd my-existing-project
 
 # Initialize SPARC files (.roo and .roomodes) without creating project structure
 npx create-sparc init
+
+# Or if running with Node directly
+node path/to/bin/index.js init
 ```
 
 This will only create the necessary SPARC files in your current directory without modifying your existing project structure.
@@ -139,6 +209,19 @@ Options:
 
 ```bash
 npx create-sparc help
+```
+
+To get help for a specific command:
+
+```bash
+# Get help for the init command
+npx create-sparc help init
+
+# Get help for the minimal command
+npx create-sparc help minimal
+
+# Get help for the aigi command
+npx create-sparc help aigi
 ```
 
 ## SPARC Methodology
@@ -478,12 +561,130 @@ The `.roomodes` file defines the different modes that can be used with the SPARC
 
 These files are essential for using the SPARC methodology in your project and provide the foundation for structured, efficient development.
 
+## AI-driven Code Generation (AIGI) Framework
+
+The AIGI framework provides specialized components for AI-driven code generation, focusing on prompt engineering, code quality assessment, and iterative refinement. This framework is designed for developers who want to leverage AI to generate high-quality code with sophisticated prompt engineering and evaluation.
+
+### What is the AIGI Framework?
+
+The AIGI framework includes specialized components for AI-driven code generation:
+
+- Prompt generation and engineering for optimal code output
+- Code quality assessment and scoring
+- Reflection and iterative improvement
+- Memory management for context preservation
+- Final assembly and integration of generated code
+
+### Directory Structure
+
+```
+.roo/                       # Configuration and rules
+├── README.md               # Overview and usage instructions
+├── code/                   # Code generation rules
+├── critic/                 # Code quality assessment
+├── final-assembly/         # Integration of generated components
+├── mcp/                    # MCP server configuration
+├── memory-manager/         # Context preservation
+├── orchestrator/           # Workflow coordination
+├── prompt-generator/       # Prompt engineering
+├── reflection/             # Iterative improvement
+├── rules/                  # General rules
+├── scorer/                 # Quality scoring
+└── tdd/                    # Test-driven development
+.roomodes                   # Custom mode definitions
+```
+
+### Creating an AIGI Framework
+
+You can create a new AIGI framework using the following command:
+
+```bash
+# Create a new AIGI framework with a specific name
+npx create-sparc aigi init my-project
+
+# Initialize AIGI files in the current directory
+npx create-sparc aigi init
+```
+
+### When to Use the AIGI Framework
+
+Consider using the AIGI framework when:
+
+- You want to focus on AI-driven code generation with sophisticated prompt engineering
+- You need specialized components for code quality assessment and scoring
+- You're building systems that require iterative refinement of AI-generated code
+- You want to implement memory management for preserving context across generation sessions
+- You need a structured approach to assembling and integrating AI-generated components
+
+## Minimal Roo Mode Framework
+
+The minimal Roo mode framework provides a lightweight foundation for creating custom Roo modes without the full SPARC project structure. This is ideal for developers who want to focus specifically on creating and customizing Roo modes.
+
+### What is the Minimal Roo Mode Framework?
+
+The minimal framework includes only the essential files and structure needed to get started with Roo mode development:
+
+- Basic mode definitions for orchestration, coding, documentation, and MCP integration
+- Minimal configuration files for MCP servers
+- Guidelines for tool usage and best practices
+- Templates for orchestration workflows
+
+### Directory Structure
+
+```
+.roo/                  # Configuration and rules
+├── README.md          # Overview and usage instructions
+├── mcp.json           # MCP server configuration
+├── rules/             # General rules
+│   ├── general_guidelines.md
+│   ├── tool_usage_guidelines.md
+│   └── orchestration_template.md
+└── rules-code/        # Code-specific rules
+    └── code_guidelines.md
+.roomodes              # Custom mode definitions
+```
+
+### Creating a Minimal Roo Mode Framework
+
+You can create a new minimal Roo mode framework using the following command:
+
+```bash
+# Create a new minimal Roo mode framework with a specific name
+npx create-sparc minimal init my-project
+
+# Initialize minimal Roo mode files in the current directory
+npx create-sparc minimal init
+```
+
+### Extending the Minimal Framework
+
+The minimal framework is designed to be easily extended:
+
+1. **Adding New Modes**: Edit the `.roomodes` file to add custom modes with specific roles and capabilities
+2. **Adding Mode-Specific Rules**: Create new rule directories and markdown files for specialized modes
+3. **Configuring MCP Servers**: Modify the `.roo/mcp.json` file to connect to external services
+
+### When to Use the Minimal Framework
+
+Consider using the minimal framework when:
+
+- You want to focus specifically on Roo mode development without the full SPARC structure
+- You're creating specialized modes for specific tasks or domains
+- You need a lightweight starting point for custom AI assistant configurations
+- You want to experiment with different mode configurations without committing to the full SPARC methodology
+
 ## Implementation Instructions
 
 ### Installation & Activation
 
-1. **Initialize SPARC in your project**: Run `npx create-sparc init` in your project directory to set up the necessary SPARC files.
-2. **Activate SPARC Orchestrator**: In Roo Code, select the "SPARC Orchestrator" as your primary mode to begin the development process.
+1. **Choose your project type**:
+   - For SPARC methodology: Run `npx create-sparc init` in your project directory
+   - For AI-driven code generation: Run `npx create-sparc aigi init` in your project directory
+   - For minimal Roo mode framework: Run `npx create-sparc minimal init` in your project directory
+2. **Activate the appropriate orchestrator**:
+   - For SPARC: Select the "SPARC Orchestrator" as your primary mode
+   - For AIGI: Select the AIGI orchestrator mode to begin the code generation process
+   - For minimal: Use the basic orchestrator to coordinate your custom modes
 
 ### Task Delegation
 
@@ -503,7 +704,9 @@ These files are essential for using the SPARC methodology in your project and pr
 2. **Role Definitions**: Edit the role definitions to match your organization's language and standards.
 3. **Project-Specific Overrides**: The `.roomodes` file in your project root can override global settings for your specific project needs.
 
-## Quick Start Example
+## Quick Start Examples
+
+### SPARC Methodology Example
 
 Here's a quick example of how to use SPARC methodology with Roo Code for a new project:
 
@@ -530,7 +733,58 @@ Here's a quick example of how to use SPARC methodology with Roo Code for a new p
    - Documentation will be comprehensive and up-to-date
    - The architecture will follow best practices
 
-This workflow dramatically reduces development time while ensuring high-quality, maintainable code.
+### AI-driven Code Generation (AIGI) Example
+
+Here's how to use the AIGI framework for AI-driven code generation:
+
+1. **Initialize a new AIGI project**:
+   ```bash
+   mkdir my-aigi-project
+   cd my-aigi-project
+   npx create-sparc aigi init
+   ```
+
+2. **Open the project in VS Code with Roo Code extension installed**
+
+3. **Start with the AIGI Orchestrator mode**:
+   - Select the AIGI orchestrator mode in Roo Code
+   - Describe your code generation goal: "Generate a React component for a user profile page"
+
+4. **Follow the AIGI workflow**:
+   - The prompt generator will create optimized prompts for code generation
+   - The critic and scorer will evaluate the generated code
+   - The reflection component will suggest improvements
+   - The final assembly will integrate all components
+
+5. **Review and refine the results**:
+   - The generated code will be high-quality and well-structured
+   - Each component will be properly documented
+   - The code will follow best practices for the target framework
+
+### Minimal Roo Mode Framework Example
+
+Here's how to create and use a minimal Roo mode framework:
+
+1. **Initialize a new minimal framework**:
+   ```bash
+   mkdir my-minimal-project
+   cd my-minimal-project
+   npx create-sparc minimal init
+   ```
+
+2. **Open the project in VS Code with Roo Code extension installed**
+
+3. **Customize your modes**:
+   - Edit the `.roomodes` file to define your custom modes
+   - Add specific rules in the `.roo/rules` directory
+   - Configure any necessary MCP servers in `.roo/mcp.json`
+
+4. **Use your custom modes**:
+   - Select your custom modes in Roo Code
+   - Follow your defined workflows
+   - Leverage the minimal structure for focused development
+
+These workflows dramatically reduce development time while ensuring high-quality, maintainable code tailored to your specific needs.
 
 ## Contributing
 

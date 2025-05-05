@@ -131,6 +131,7 @@ dist
 
 # Test results
 test-results.json
+aigi-test
 
 # IDE files
 .idea/
