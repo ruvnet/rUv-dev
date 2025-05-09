@@ -26,7 +26,42 @@
       "url": "https://mcp.composio.dev/mem0/abandoned-creamy-horse-Y39-hm?agent=cursor"
     },
     "perplexityai": {
-      "url": "https://mcp.composio.dev/perplexityai/abandoned-creamy-horse-Y39-hm?agent=cursor"
+      "url": "https://mcp.composio.dev/composio/server/639cb323-8245-493a-a808-7fdf217cc865",
+      "alwaysAllow": [
+        "PERPLEXITYAI_PERPLEXITY_AI_SEARCH"
+      ]
+    },
+    "mymcp-server": {
+      "command": "node",
+      "args": [
+        "/workspaces/rUv-dev/my-mcp-server/dist/index.js"
+      ],
+      "alwaysAllow": []
+    },
+    "fine-tune-mcp": {
+      "command": "python",
+      "args": [
+        "-m",
+        "fine_tune_mcp.server"
+      ],
+      "cwd": "/workspaces/rUv-dev/fine-tune-mcp",
+      "env": {
+        "PYTHONPATH": "/workspaces/rUv-dev/fine-tune-mcp"
+      },
+      "alwaysAllow": [
+        "echo",
+        "calculate",
+        "long_task",
+        "fetch_data",
+        "prepare_training_data",
+        "upload_training_file",
+        "start_fine_tuning_job",
+        "get_fine_tuning_job_status",
+        "list_fine_tuning_jobs",
+        "cancel_fine_tuning_job",
+        "list_fine_tuned_models",
+        "delete_fine_tuned_model"
+      ]
     }
   }
 }

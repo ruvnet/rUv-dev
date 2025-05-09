@@ -1,0 +1,127 @@
+{
+  "name": "reinforcement_fine_tuning",
+  "description": "Launch and manage OpenAI reinforcement fine-tuning (RFT) jobs",
+  "version": "0.1.0",
+  "methods": [
+    {
+      "name": "start_job",
+      "description": "Create a new reinforcement fine-tuning job",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "training_file": {
+            "type": "string",
+            "description": "OpenAI file ID for the training data"
+          },
+          "validation_file": {
+            "type": "string",
+            "description": "OpenAI file ID for the validation data"
+          },
+          "grader": {
+            "type": "object",
+            "description": "Multi-grader configuration for reinforcement learning",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of grader to use"
+              }
+            },
+            "additionalProperties": true
+          },
+          "base_model": {
+            "type": "string",
+            "default": "o4-mini-2025-04-16",
+            "description": "Base model to fine-tune from"
+          },
+          "response_schema": {
+            "type": "object",
+            "description": "JSON schema for structured outputs",
+            "additionalProperties": true
+          },
+          "hyperparameters": {
+            "type": "object",
+            "description": "Fine-tuning hyperparameters",
+            "properties": {
+              "batch_size": {
+                "type": "integer",
+                "description": "Number of samples processed per batch",
+                "minimum": 1
+              },
+              "learning_rate_multiplier": {
+                "type": "number",
+                "description": "Learning rate multiplier",
+                "minimum": 0
+              },
+              "n_epochs": {
+                "type": "integer",
+                "description": "Number of training epochs",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "required": ["training_file", "validation_file", "grader"]
+      }
+    },
+    {
+      "name": "get_job_status",
+      "description": "Fetch the event stream for a running fine-tuning job",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "description": "OpenAI fine-tuning job ID",
+            "minLength": 1
+          }
+        },
+        "required": ["job_id"]
+      }
+    },
+    {
+      "name": "list_checkpoints",
+      "description": "Lists all checkpoints for a fine-tuning job",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "description": "OpenAI fine-tuning job ID",
+            "minLength": 1
+          }
+        },
+        "required": ["job_id"]
+      }
+    },
+    {
+      "name": "pause_job",
+      "description": "Pauses a running fine-tuning job",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "description": "OpenAI fine-tuning job ID",
+            "minLength": 1
+          }
+        },
+        "required": ["job_id"]
+      }
+    },
+    {
+      "name": "resume_job",
+      "description": "Resumes a paused fine-tuning job",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "description": "OpenAI fine-tuning job ID",
+            "minLength": 1
+          }
+        },
+        "required": ["job_id"]
+      }
+    }
+  ]
+}

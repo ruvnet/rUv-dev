@@ -1,0 +1,38 @@
+---
+description: Guidelines for search and replace operations
+globs:
+  - "**/*.js"
+  - "**/*.ts"
+---
+
+# Search and Replace Guidelines
+
+## search_and_replace
+```xml
+<search_and_replace>
+  <path>File path here</path>
+  <search>Text to search for</search>
+  <replace>Text to replace with</replace>
+  <use_regex>true/false</use_regex>
+</search_and_replace>
+```
+
+### Required Parameters:
+### Optional Parameters:
+- `use_regex`: Boolean indicating whether to use regex (defaults to false)
+
+### Common Errors to Avoid:
+- Missing `search` parameter
+- Missing `replace` parameter
+- Attempting to modify non-existent files
+- Malformed regex patterns when use_regex is true
+
+### Best Practices:
+- Always include both search and replace parameters
+- Verify the file exists before attempting to modify it
+- Use apply_diff for complex changes instead
+- Test regex patterns separately before using them
+- Escape special characters in regex patterns
+- `path`: The file path to modify
+- `search`: The text to search for
+- `replace`: The text to replace with

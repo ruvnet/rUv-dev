@@ -1,0 +1,34 @@
+---
+description: Guidelines for inserting content into files
+globs:
+  - "**/*.js"
+  - "**/*.ts"
+---
+
+# Insert Content Guidelines
+
+## insert_content
+```xml
+<insert_content>
+  <path>File path here</path>
+  <line>Line number</line>
+  <content>Content to insert</content>
+</insert_content>
+```
+
+### Required Parameters:
+### Common Errors to Avoid:
+- Missing any of the required parameters
+- Using non-numeric values for line
+- Attempting to insert at line numbers beyond file length
+- Attempting to modify non-existent files
+
+### Best Practices:
+- Always verify the file exists before attempting to modify it
+- Check file length before specifying line
+- Use read_file first to confirm file content and structure
+- Use for adding new content rather than modifying existing content
+- Prefer for documentation additions and new code blocks
+- `path`: The file path to modify
+- `line`: The line number where content should be inserted
+- `content`: The content to insert
