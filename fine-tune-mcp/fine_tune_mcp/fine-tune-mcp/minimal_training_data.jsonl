@@ -1,0 +1,2 @@
+{"messages": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Hello, who are you?"}, {"role": "assistant", "content": "I'm an AI assistant designed to help with a wide range of tasks. How can I assist you today?"}]}
+{"messages": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "What's the capital of France?"}, {"role": "assistant", "content": "The capital of France is Paris."}]}

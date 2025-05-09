@@ -1,0 +1,2 @@
+{"messages": [{"role": "user", "content": "Will our data be encrypted at rest?"}], "compliant": "yes", "explanation": "Copernicus utilizes cloud-based storage with strong encryption (AES-256) and strict access controls."}
+{"messages": [{"role": "user", "content": "Do you enforce multi-factor authentication (MFA) internally?"}], "compliant": "yes", "explanation": "The policy explicitly mentions role-based authentication with multi-factor security."}

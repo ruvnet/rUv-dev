@@ -1,0 +1,3 @@
+{"messages": [{"role": "user", "content": "Do you have a dedicated security team?"}], "compliant": "yes", "explanation": "A dedicated security team follows strict protocols for handling incidents."}
+{"messages": [{"role": "user", "content": "Have you undergone third-party security audits or penetration testing in the last 12 months?"}], "compliant": "needs review", "explanation": "The policy does not explicitly mention undergoing third-party security audits or penetration testing. It only mentions SOC 2 and GDPR compliance."}
+{"messages": [{"role": "user", "content": "Is your software SOC 2, ISO 27001, or similarly certified?"}], "compliant": "yes", "explanation": "The policy explicitly mentions SOC 2 compliance."}
