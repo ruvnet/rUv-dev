@@ -1,0 +1,90 @@
+service: logitech-mcp-server
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 1024
+  timeout: 30
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'dev'}
+  
+  # Environment variables
+  environment:
+    NODE_ENV: ${opt:stage, 'dev'}
+    SERVER_NAME: logitech-mcp-server
+    SERVER_VERSION: 1.0.0
+    LOG_LEVEL: info
+    SERVERLESS_EXECUTION: true
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY, ''}
+    # Add other environment variables as needed
+  
+  # IAM roles
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: arn:aws:logs:*:*:*
+
+functions:
+  api:
+    handler: dist/index.awsHandler
+    description: MCP Server API Endpoint
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: any
+    # Cold start optimizations
+    provisionedConcurrency: ${opt:provisioned, 0}
+    maximumRetryAttempts: 1
+
+  # Optional scheduled health check to keep instances warm
+  healthCheck:
+    handler: dist/serverless/handlers/aws-lambda-handler.handler
+    description: MCP Server Health Check
+    events:
+      - schedule:
+          rate: rate(5 minutes)
+          enabled: ${self:custom.warmupEnabled}
+          input:
+            path: /health
+            httpMethod: GET
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+custom:
+  # Enable/disable scheduled warmup
+  warmupEnabled: ${opt:warmup, false}
+  
+  # TypeScript configuration
+  serverlessPluginTypescript:
+    tsConfigFileLocation: './tsconfig.json'
+    
+  # AWS specific options
+  serverlessOffline:
+    httpPort: 3001
+    lambdaPort: 3002
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+    - .git/**
+    - .github/**
+    - .vscode/**
+    - test/**
+    - docs/**
+    - coverage/**
+    - '**/*.test.ts'
+    - '**/*.spec.ts'
+  include:
+    - dist/**
+    - package.json
+    - serverless/**

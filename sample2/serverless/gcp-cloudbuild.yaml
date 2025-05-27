@@ -1,0 +1,37 @@
+steps:
+  # Install dependencies
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+    
+  # Build the application
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+    
+  # Deploy to Cloud Functions
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'functions'
+      - 'deploy'
+      - 'logitech-mcp-server'
+      - '--gen2'
+      - '--runtime=nodejs18'
+      - '--region=${_REGION}'
+      - '--source=.'
+      - '--entry-point=gcpHandler'
+      - '--trigger-http'
+      - '--allow-unauthenticated'
+      - '--min-instances=0'
+      - '--max-instances=10'
+      - '--memory=1024MB'
+      - '--timeout=60s'
+      - '--set-env-vars=NODE_ENV=${_NODE_ENV},SERVER_NAME=logitech-mcp-server,SERVER_VERSION=1.0.0,LOG_LEVEL=info,SERVERLESS_EXECUTION=true,OPENAI_API_KEY=${_OPENAI_API_KEY}'
+
+# Substitution variables
+substitutions:
+  _REGION: 'us-central1'
+  _NODE_ENV: 'production'
+  _OPENAI_API_KEY: ''
+
+# Options
+options:
+  logging: CLOUD_LOGGING_ONLY

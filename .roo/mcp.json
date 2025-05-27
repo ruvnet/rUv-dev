@@ -25,6 +25,12 @@
     "mem0": {
       "url": "https://mcp.composio.dev/mem0/abandoned-creamy-horse-Y39-hm?agent=cursor"
     },
+    "firecrawl": {
+      "url": "https://mcp.composio.dev/composio/server/daf70208-78c6-4e3c-b584-6f8e1bc47922?useComposioHelperActions=true",
+      "alwaysAllow": [
+        "FIRECRAWL_SEARCH"
+      ]
+    },
     "perplexityai": {
       "url": "https://mcp.composio.dev/composio/server/639cb323-8245-493a-a808-7fdf217cc865",
       "alwaysAllow": [

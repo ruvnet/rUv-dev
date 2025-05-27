@@ -1,0 +1,52 @@
+{
+  "name": "mcp-server",
+  "module": "src/index.ts",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) Server",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir build --target node",
+    "build:http": "bun build src/server/http-server.ts --outdir build --target node",
+    "dev": "bun --watch src/index.ts",
+    "start:http": "bun run src/server/http-server.ts",
+    "dev:http": "bun --watch src/server/http-server.ts",
+    "build:node": "tsc",
+    "start:node": "node dist/index.js",
+    
+    "// Serverless Scripts": "Scripts for serverless deployment",
+    "build:serverless": "tsc",
+    "deploy:aws": "cd serverless && serverless deploy --config aws-serverless.yml",
+    "deploy:aws:prod": "cd serverless && serverless deploy --config aws-serverless.yml --stage prod",
+    "deploy:azure": "cd serverless && func azure functionapp publish logitech-mcp-server",
+    "deploy:gcp": "cd serverless && gcloud builds submit --config=gcp-cloudbuild.yaml",
+    "start:offline": "cd serverless && serverless offline --config aws-serverless.yml"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "azure-functions-core-tools": "^4.0.5530",
+    "serverless": "^3.38.0",
+    "serverless-offline": "^13.3.3",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@valibot/to-json-schema": "^1.0.0",
+    "effect": "^3.14.4",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "fastmcp": "^1.21.0",
+    "zod": "^3.24.2",
+    "aws-lambda": "^1.0.7",
+    "aws-serverless-express": "^3.4.0",
+    "source-map-support": "^0.5.21"
+  }
+}
