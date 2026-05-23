@@ -407,13 +407,18 @@ main();
    */
   async _installDependencies(config) {
     const projectPath = pathUtils.resolve(config.projectPath);
-    const { execSync } = require('child_process');
-    
-    // Determine package manager command
+    const { execFileSync } = require('child_process');
+
+    // Allowlist of permitted package managers to prevent command injection
+    const ALLOWED_PACKAGE_MANAGERS = ['npm', 'yarn', 'pnpm'];
     const command = config.npmClient || 'npm';
-    
+    if (!ALLOWED_PACKAGE_MANAGERS.includes(command)) {
+      throw new Error(`Invalid package manager: ${command}. Must be one of: ${ALLOWED_PACKAGE_MANAGERS.join(', ')}`);
+    }
+
     try {
-      execSync(`${command} install`, {
+      // Use execFileSync with array args to prevent shell injection
+      execFileSync(command, ['install'], {
         cwd: projectPath,
         stdio: config.verbose ? 'inherit' : 'pipe'
       });
@@ -430,15 +435,15 @@ main();
    */
   async _initializeGit(config) {
     const projectPath = pathUtils.resolve(config.projectPath);
-    const { execSync } = require('child_process');
-    
+    const { execFileSync } = require('child_process');
+
     try {
-      // Initialize git repository
-      execSync('git init', {
+      // Initialize git repository using execFileSync with array args (no shell injection)
+      execFileSync('git', ['init'], {
         cwd: projectPath,
         stdio: config.verbose ? 'inherit' : 'pipe'
       });
-      
+
       // Create .gitignore
       const gitignoreContent = `# Logs
 logs
@@ -518,12 +523,12 @@ Thumbs.db
       
       // Initial commit if requested
       if (config.git.initialCommit) {
-        execSync('git add .', {
+        execFileSync('git', ['add', '.'], {
           cwd: projectPath,
           stdio: config.verbose ? 'inherit' : 'pipe'
         });
-        
-        execSync('git commit -m "Initial commit"', {
+
+        execFileSync('git', ['commit', '-m', 'Initial commit'], {
           cwd: projectPath,
           stdio: config.verbose ? 'inherit' : 'pipe'
         });

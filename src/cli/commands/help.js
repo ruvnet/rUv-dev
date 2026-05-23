@@ -32,8 +32,23 @@ function helpCommand(program) {
     .description('Display help for a specific command')
     .action((commandName) => {
       if (commandName) {
-        // First try to find a dedicated help file
-        const helpFilePath = path.join(__dirname, 'help', `${commandName}.md`);
+        // Sanitize commandName to prevent path traversal: only allow alphanumeric, dash, underscore
+        if (!/^[a-zA-Z0-9_-]+$/.test(commandName)) {
+          console.log(chalk.red(`\nInvalid command name: ${commandName}`));
+          program.help();
+          return;
+        }
+
+        // Build path and verify it stays within the help directory
+        const helpDir = path.resolve(__dirname, 'help');
+        const helpFilePath = path.resolve(helpDir, `${commandName}.md`);
+
+        // Boundary check: resolved path must start with the help directory
+        if (!helpFilePath.startsWith(helpDir + path.sep) && helpFilePath !== helpDir) {
+          console.log(chalk.red(`\nInvalid command name: ${commandName}`));
+          program.help();
+          return;
+        }
         
         if (fs.existsSync(helpFilePath)) {
           // Read and display the markdown help file
