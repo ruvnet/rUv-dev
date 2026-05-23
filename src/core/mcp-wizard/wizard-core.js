@@ -37,7 +37,33 @@ const wizardCore = {
       };
       
       this.options = { ...defaultOptions, ...options };
-      
+
+      // Validate registryUrl to prevent SSRF: only allow https: scheme and
+      // well-formed URLs. Reject file:, data:, internal IP ranges, etc.
+      const registryUrl = this.options.registryUrl;
+      try {
+        const parsed = new URL(registryUrl);
+        if (parsed.protocol !== 'https:') {
+          throw new Error(`Registry URL must use HTTPS (got ${parsed.protocol})`);
+        }
+        // Block private/internal IP ranges (SSRF protection)
+        const hostname = parsed.hostname;
+        if (
+          hostname === 'localhost' ||
+          hostname === '127.0.0.1' ||
+          hostname === '::1' ||
+          /^10\./.test(hostname) ||
+          /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname) ||
+          /^192\.168\./.test(hostname) ||
+          /^169\.254\./.test(hostname) ||
+          /^0\./.test(hostname)
+        ) {
+          throw new Error(`Registry URL resolves to a private/internal address: ${hostname}`);
+        }
+      } catch (urlError) {
+        throw new Error(`Invalid registry URL: ${urlError.message}`);
+      }
+
       // Initialize Registry Client
       this.registryClient = new RegistryClient({
         baseUrl: this.options.registryUrl,

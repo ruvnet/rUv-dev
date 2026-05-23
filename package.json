@@ -29,7 +29,7 @@
     "chalk": "^4.1.2",
     "commander": "^14.0.0",
     "fs-extra": "^11.3.5",
-    "inquirer": "^8.2.6",
+    "inquirer": "^8.2.7",
     "marked": "^14.1.4",
     "marked-terminal": "^7.3.0",
     "ora": "^5.4.1"
