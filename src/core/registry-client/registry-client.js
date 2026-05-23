@@ -14,7 +14,7 @@ const RegistryError = require('./registry-error');
  * Default options for the Registry Client
  */
 const DEFAULT_OPTIONS = {
-  baseUrl: 'https://registry.example.com/api/v1/mcp',
+  baseUrl: 'https://registry.modelcontextprotocol.io/v0',
   timeout: 10000, // 10 seconds
   retries: 3,
   retryDelay: 1000, // 1 second
