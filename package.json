@@ -1,6 +1,6 @@
 {
   "name": "create-sparc",
-  "version": "1.2.2",
+  "version": "1.2.5",
   "description": "NPX package to scaffold new projects with SPARC methodology structure",
   "main": "src/index.js",
   "type": "commonjs",
@@ -27,19 +27,19 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
-    "commander": "^9.4.1",
-    "fs-extra": "^11.1.1",
-    "inquirer": "^8.2.5",
-    "marked": "^4.3.0",
-    "marked-terminal": "^5.2.0",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.3.5",
+    "inquirer": "^8.2.6",
+    "marked": "^14.1.4",
+    "marked-terminal": "^7.3.0",
     "ora": "^5.4.1"
   },
   "devDependencies": {
-    "eslint": "^8.38.0",
-    "jest": "^29.5.0"
+    "eslint": "^8.57.1",
+    "jest": "^29.7.0"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
   },
   "files": [
     "bin/",

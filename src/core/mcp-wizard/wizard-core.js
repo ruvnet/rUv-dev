@@ -32,7 +32,7 @@ const wizardCore = {
         projectPath: process.cwd(),
         mcpConfigPath: '.roo/mcp.json',
         roomodesPath: '.roomodes',
-        registryUrl: 'https://registry.example.com/api/v1/mcp',
+        registryUrl: 'https://registry.modelcontextprotocol.io/v0',
         cacheEnabled: true
       };
       
